@@ -1,23 +1,23 @@
-$(document).ready(function(){
+jQuery(document).ready(function(){
 	/*loader*/
 	setInterval(function(){
-		$('#addax-loader').addClass('close');
+		jQuery('#addax-loader').addClass('close');
 	},3000);
 
 
-    $('header .s-toggle').click(function(e){
+    jQuery('header .s-toggle').click(function(e){
         e.preventDefault();
-		$('header').toggleClass('s-open')
+		jQuery('header').toggleClass('s-open')
     })
-    	
 
 
-    	 $(".drop-down").on('mouseenter mouseleave', function (e) {
 
-    	 		var $dropDown = $(this).find('ul').first(),
+    	 jQuery(".drop-down").on('mouseenter mouseleave', function (e) {
+
+    	 		var $dropDown = jQuery(this).find('ul').first(),
     	 			$dropOffset = $dropDown.offset().left,
 		    		$subDropDown = $dropDown.find('.sub-drop-down'),
-			    	$container = $(".container"),
+			    	$container = jQuery(".container"),
 		    		$subDropDownLink = $subDropDown.find('a').first(),
 		    		$subDropMenu = $subDropDown.find('ul').first();
 
@@ -35,23 +35,23 @@ $(document).ready(function(){
 
     	 /*testimonials*/
 
-    	 var atCar = $('.at-carousel');
+    	 var atCar = jQuery('.at-carousel');
     	 atCar.owlCarousel({
     	 	singleItem : true,
     	 	autoHeight : true
     	 })
-    	 $('.at-nav .next').click(function(){
+    	 jQuery('.at-nav .next').click(function(){
     	 	atCar.trigger('owl.next')
     	 })
 
 
 
 		/*-----------addax client carousel ------------*/
-	
-	
-		var addaxClientCarousel = $('.addax-client-carousel'),
+
+
+		var addaxClientCarousel = jQuery('.addax-client-carousel'),
 			ClientQty = addaxClientCarousel.attr("data-client-quantity");
-		
+
 		 addaxClientCarousel.owlCarousel({
 			  stagePadding: 50,
 			  loop:true,
@@ -70,7 +70,7 @@ $(document).ready(function(){
 
     	 /*addax hero slider 1*/
 
-		 var ahCar = $("#addax-hero");
+		 var ahCar = jQuery("#addax-hero");
 		    //Init the carousel
 		    ahCar.owlCarousel({
 		      slideSpeed : 500,
@@ -79,21 +79,21 @@ $(document).ready(function(){
               mouseDrag : false,
 		      addClassActive : true,
 		      pagination : true,
-              
+
 		    });
-		 
+
 		    // Custom Navigation Events
-		    $(".addax-hero-controller .ah-right-btn").click(function(){
+		    jQuery(".addax-hero-controller .ah-right-btn").click(function(){
 		     ahCar.trigger('owl.next');
 		    })
-		    $(".addax-hero-controller .ah-left-btn").click(function(){
+		    jQuery(".addax-hero-controller .ah-left-btn").click(function(){
 		     ahCar.trigger('owl.prev');
 		    })
 
 
     	 /*addax vertical carousel*/
 
-    	 var avcCar = $(".avc-container");
+    	 var avcCar = jQuery(".avc-container");
     	 avcCar.owlCarousel({
 
 	    	  items : 1, //10 items above 1000px browser width
@@ -107,7 +107,7 @@ $(document).ready(function(){
 
 
     	 });
-    	 $(document.documentElement).keyup(function (event) {  
+    	 jQuery(document.documentElement).keyup(function (event) {
     	 // Custom Navigation Events
 		  // handle cursor keys
 		    if (event.keyCode == 37) {
@@ -122,34 +122,34 @@ $(document).ready(function(){
 
 		  //sticky
 
-		  $(window).scroll(function() {    
-		    var scroll = $(window).scrollTop();
+		  jQuery(window).scroll(function() {
+		    var scroll = jQuery(window).scrollTop();
 		    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 		     //>=, not <=
 		    if (scroll >= 85) {
 		        //clearHeader, not clearheader - caps H
-		        $("header").addClass("isSticky");
+		        jQuery("header").addClass("isSticky");
 		    }else {
-		        $("header").removeClass("isSticky");
+		        jQuery("header").removeClass("isSticky");
 		    }
 		});
 
 		  /*menu toggle*/
 
-		  var addaxMenuToggle = $('#addax-header .navbar-toggle');
+		  var addaxMenuToggle = jQuery('#addax-header .navbar-toggle');
 		  addaxMenuToggle.click(function(){
-		  		$(this).toggleClass('cross');
+		  		jQuery(this).toggleClass('cross');
 		  })
-		  
-		  
-		  
-		  
-		  
-		  
+
+
+
+
+
+
     /*****************************************
     Counter Box
     /*****************************************/
-    
+
 
           $.fn.counterUp = function( options ) {
 
@@ -162,7 +162,7 @@ $(document).ready(function(){
             return this.each(function(){
 
                 // Store the object
-                var $this = $(this);
+                var $this = jQuery(this);
                 var $settings = settings;
 
                 var counterUpper = function() {
@@ -224,13 +224,13 @@ $(document).ready(function(){
 
 
 
-        $('.counter').counterUp({
+        jQuery('.counter').counterUp({
             delay: 10,
             time: 1000
         });
-	
-	
-	
+
+
+
 	/*****************************************
     Donut Chart
     /*****************************************/
@@ -257,7 +257,7 @@ $(document).ready(function(){
 
             var percent;
             var endPercent = 0;
-            var el = $(this);
+            var el = jQuery(this);
             var fill = false;
             var type = "";
 
@@ -288,7 +288,7 @@ $(document).ready(function(){
             }
 
             var size = settings.dimension,
-                canvas = $("<canvas></canvas>").attr({
+                canvas = jQuery("<canvas></canvas>").attr({
                     width: size,
                     height: size
                 }).appendTo(el).get(0);
@@ -297,7 +297,7 @@ $(document).ready(function(){
 
             var dpr = window.devicePixelRatio;
             if (dpr) {
-                var $canvas = $(canvas);
+                var $canvas = jQuery(canvas);
                 $canvas.css("width", size);
                 $canvas.css("height", size);
                 $canvas.attr("width", size * dpr);
@@ -306,7 +306,7 @@ $(document).ready(function(){
                 context.scale(dpr, dpr);
             }
 
-            var container = $(canvas).parent();
+            var container = jQuery(canvas).parent();
             var x = size / 2;
             var y = size / 2;
             var radius = size / 2.5;
@@ -341,7 +341,7 @@ $(document).ready(function(){
                     if (el.data(attribute) != undefined) {
                         settings[attribute] = el.data(attribute);
                     } else {
-                        settings[attribute] = $(defaults).attr(attribute);
+                        settings[attribute] = jQuery(defaults).attr(attribute);
                     }
 
                     if (attribute == "fill" && el.data("fill") != undefined) {
@@ -410,17 +410,17 @@ $(document).ready(function(){
 
         });
     };
-	
-        $(".addax-donut-chart").addaxDonutChart();
-		
+
+        jQuery(".addax-donut-chart").addaxDonutChart();
+
 
     //Scroll Down
-    
-    $('.scrollDown').click(function(event){
+
+    jQuery('.scrollDown').click(function(event){
             event.preventDefault();
-            var winHeight = $(window).height();
-            
-             $('html, body').animate({
+            var winHeight = jQuery(window).height();
+
+             jQuery('html, body').animate({
                     scrollTop: winHeight,
                     complete: function () {
                         //Hide your button here
@@ -432,41 +432,49 @@ $(document).ready(function(){
 
 // Accordion
 
- $('.collapse.in').prev('.panel-heading').addClass('active');
-  $('#addax-accordion2, #addax-accordion')
+ jQuery('.collapse.in').prev('.panel-heading').addClass('active');
+  jQuery('#addax-accordion2, #addax-accordion')
     .on('show.bs.collapse', function(a) {
-      $(a.target).prev('.panel-heading').addClass('active');
+      jQuery(a.target).prev('.panel-heading').addClass('active');
     })
     .on('hide.bs.collapse', function(a) {
-      $(a.target).prev('.panel-heading').removeClass('active');
+      jQuery(a.target).prev('.panel-heading').removeClass('active');
     });
 
 
 
     // Filter posts
 
-    var filterBtn = $('.addax-filters .filter'),
-        addaxProject = $('.addax-filter-gallery > div');
+    var filterBtn = jQuery('.addax-filters .filter'),
+        addaxProject = jQuery('.addax-filter-gallery > div');
 
 
         filterBtn.click(function(event){
 
             event.preventDefault();
 
-            var selectedFilter = $(this),
-                filterId = $(this).attr('id');
+            var selectedFilter = jQuery(this),
+                filterId = jQuery(this).attr('id');
 
             filterBtn.removeClass('selected');
             selectedFilter.addClass('selected');
-            
-            
+
+
             if(filterId == 'all'){
                 addaxProject.fadeIn(600);
             }
             else{
-                var $el = $('.' + this.id).fadeIn(600);
+                var $el = jQuery('.' + this.id).fadeIn(600);
                 addaxProject.not($el).fadeOut(600);
             }
 
-            
+
         })
+
+//custom
+	jQuery(document).ready(function(){
+	jQuery('[data-toggle="tooltip"]').tooltip();
+
+	});
+
+	new WOW().init();

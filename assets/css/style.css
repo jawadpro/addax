@@ -60,3 +60,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0076ff', end
 	transform:translate(-50%,-50%);
 }
 
+.logged-in.admin-bar
+{
+	position:relative;
+}

@@ -100,7 +100,7 @@
 	-moz-animation:sticky 1s ease;
 }
 #addax-header.style1.isSticky .navbar{
-	
+
 	box-shadow: 0 2px 25px rgba(0,0,0,.2);
     background-color: #fff !important;
 }
@@ -227,7 +227,7 @@
 #addax-header .navbar-nav > li > a{
     padding-left:0;
     padding-right:20px;
-    color:#fff;
+    color:#555555;
 }
 #addax-header .dropdown-header,
 #addax-header .nav a{
@@ -237,7 +237,7 @@
     padding-right:0;
 }
 #addax-header .navbar-default .navbar-nav > .active > a, #addax-header .navbar-default .navbar-nav > .active > a:hover, #addax-header .navbar-default .navbar-nav > .active > a:focus{
- background-color:transparent; 
+ background-color:transparent;
 }
 
 #addax-header.style2 .navbar-brand{
@@ -343,7 +343,7 @@
     position:absolute;
     left:50%;
     transform:translateX(-50%)
-} 
+}
   #addax-header.style2 .navbar-nav > li > a{
       padding:0;
       padding:15px 20px 15px 0;
@@ -377,7 +377,7 @@
   #addax-header.style2 .navbar-nav>li.active>a:after{
     width:calc(100% - 20px);
   }
-  
+
   #addax-header.style2 .h-icon>a:hover{
       color:#0076ff;
   }
@@ -415,7 +415,7 @@
 }
 
 @media only screen and (max-width : 1099px) {
- 
+
 #addax-header.style1.isSticky{
 	position:relative;
 	animation:none;
@@ -423,7 +423,7 @@
 	-moz-animation:none;
 }
 #addax-header.style1.isSticky .navbar{
-	
+
 	box-shadow: none ;
     background-color: transparent !important;
 }
@@ -455,7 +455,7 @@
     position: relative !important;
   }
 }
- 
+
 @media only screen and (max-width : 768px) {
   #addax-header .topBar .tb-left {
     width: 100% !important;
