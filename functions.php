@@ -13,15 +13,8 @@
    require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-walker-menu.php' );
    require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-frontend-functions.php' );
    require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-custom-style.php' );
-
-   /* ================ ADDAX REDUX INTEGRATION ============== */
-
-   if ( class_exists( 'ReduxFrameworkPlugin' ) && file_exists( WP_PLUGIN_DIR .'/addax-core/redux-extensions/addax-config.php' ) ) {
-    if( class_exists('addax_core') ){
-   		require_once( WP_PLUGIN_DIR .'/addax-core/redux-extensions/addax-config.php' );
-   	}
-   }
-
+   require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-metabox-fields.php' );
+   require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-register-sidebars.php' );
 
   /* ================ ADDAX STYLES & SCRIPTS ============== */
 
@@ -46,7 +39,7 @@
     wp_enqueue_script( 'addax-wow-min-js' , ADDAX_TEMPLATE_URI . '/assets/js/wow.min.js', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-jquery-waypoints-js' , ADDAX_TEMPLATE_URI . '/assets/js/jquery.waypoints.min.js', array( 'jquery' ), '' , true  );
     //wp_enqueue_script( 'addax-map-js' , ADDAX_TEMPLATE_URI . '/assets/js/map.js', array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-map-api-js' , 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB_FOwS1sfvZkhjueoLFRY0s-j_k1CbKn8', array( 'jquery' ), '' , true  );
+    //wp_enqueue_script( 'addax-map-api-js' , 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB_FOwS1sfvZkhjueoLFRY0s-j_k1CbKn8', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-smart-menus-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.min.js' , array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-smart-menus-bts-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.bootstrap.js' , array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-carousel-js' , ADDAX_TEMPLATE_URI . '/assets/js/custom.js', array( 'jquery' ), '' , true  );
@@ -63,3 +56,7 @@
     register_nav_menus( array(
   		'main-menu' => esc_html__( 'Main Menu', 'addax' ),
   	) );
+
+    /* ================ ADDAX MENU LOCATIONS ============== */
+
+    add_image_size( 'addax-client-img', 80, 80 );

@@ -69,26 +69,30 @@ jQuery(document).ready(function(){
 
 
     	 /*addax hero slider 1*/
+			jQuery(document).ready(function() {
 
-		 var ahCar = jQuery("#addax-hero");
-		    //Init the carousel
-		    ahCar.owlCarousel({
-		      slideSpeed : 500,
-		      paginationSpeed : 500,
-		      singleItem : true,
-              mouseDrag : false,
-		      addClassActive : true,
-		      pagination : true,
+				var ahCar = jQuery("#addax-hero");
+	 		    //Init the carousel
+	 		    ahCar.owlCarousel({
+	 		      slideSpeed : 500,
+	 		      paginationSpeed : 500,
+	 		      singleItem : true,
+	               mouseDrag : false,
+	 		      addClassActive : true,
+	 		      pagination : true,
 
-		    });
+	 		    });
 
-		    // Custom Navigation Events
-		    jQuery(".addax-hero-controller .ah-right-btn").click(function(){
-		     ahCar.trigger('owl.next');
-		    })
-		    jQuery(".addax-hero-controller .ah-left-btn").click(function(){
-		     ahCar.trigger('owl.prev');
-		    })
+	 		    // Custom Navigation Events
+	 		    jQuery(".addax-hero-controller .ah-right-btn").click(function(){
+	 		     ahCar.trigger('owl.next');
+	 		    })
+	 		    jQuery(".addax-hero-controller .ah-left-btn").click(function(){
+	 		     ahCar.trigger('owl.prev');
+	 		    })
+
+
+			});
 
 
     	 /*addax vertical carousel*/
@@ -151,10 +155,10 @@ jQuery(document).ready(function(){
     /*****************************************/
 
 
-          $.fn.counterUp = function( options ) {
+          jQuery.fn.counterUp = function( options ) {
 
             // Defaults
-            var settings = $.extend({
+            var settings = jQuery.extend({
                 'time': 400,
                 'delay': 10
             }, options);
@@ -234,7 +238,7 @@ jQuery(document).ready(function(){
 	/*****************************************
     Donut Chart
     /*****************************************/
-    $.fn.addaxDonutChart = function (options, callback) {
+    jQuery.fn.addaxDonutChart = function (options, callback) {
 
         var defaults = {
             startdegree: 0,
@@ -251,7 +255,7 @@ jQuery(document).ready(function(){
 
         return this.each(function () {
 
-            var settings = $.extend({}, defaults, options || {});
+            var settings = jQuery.extend({}, defaults, options || {});
 
             var customSettings = ["color", "bgcolor", "fill", "width", "dimension", "animationstep", "endPercent", "border", "startdegree"];
 
@@ -337,7 +341,7 @@ jQuery(document).ready(function(){
 
 
             function checkDataAttributes(el) {
-                $.each(customSettings, function (index, attribute) {
+                jQuery.each(customSettings, function (index, attribute) {
                     if (el.data(attribute) != undefined) {
                         settings[attribute] = el.data(attribute);
                     } else {
@@ -389,7 +393,7 @@ jQuery(document).ready(function(){
                 }
 
                 if (curPerc == endPercent && fireCallback && typeof (settings) != "undefined") {
-                    if ($.isFunction(settings.complete)) {
+                    if (jQuery.isFunction(settings.complete)) {
                         settings.complete();
 
                         fireCallback = false;

@@ -1,6 +1,6 @@
 <?php
 /*
-* Template for Header
+* Addax Header Content
 */
 
  global $addax_theme_options;

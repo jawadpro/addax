@@ -4,9 +4,19 @@
 
   if ( ! function_exists( 'addax_header' ) ) {
       function addax_header() {
-              get_template_part( 'views/header/addax-default-header' );
+              get_template_part( 'views/content' , 'header' );
           }
   }
+
+
+  /* ================ ADDAX FOOTER FUNCTION ============== */
+
+ if ( ! function_exists( 'addax_footer' ) ) {
+     function addax_footer() {
+             get_template_part( 'views/content' , 'footer' );
+         }
+ }
+
 
   /* ================ ADDAX MAIN MENU ============== */
 
