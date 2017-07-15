@@ -2,90 +2,39 @@
 /*
 * Addax Footer Content
 */
+
+global $addax_theme_options;
+
 ?>
 <footer id="addax-footer">
 
       <div class="container">
 
+          <?php if( isset( $addax_theme_options['footer-widget-sec'] ) && $addax_theme_options['footer-widget-sec'] == true ) { ?>
+
           <div class="row">
 
+            <?php if( $addax_theme_options['footer-widgets-layout'] == 2 ) { ?>
+              <div class="col-md-6"><?php dynamic_sidebar( 'addax_footer_one' ); ?></div>
+              <div class="col-md-6"><?php dynamic_sidebar( 'addax_footer_two' ); ?></div>
+            <?php } ?>
 
-            <div class="col-md-3">
+            <?php if( $addax_theme_options['footer-widgets-layout'] == 3 ) { ?>
+              <div class="col-md-4"><?php dynamic_sidebar( 'addax_footer_one' ); ?></div>
+              <div class="col-md-4"><?php dynamic_sidebar( 'addax_footer_two' ); ?></div>
+              <div class="col-md-4"><?php dynamic_sidebar( 'addax_footer_three' ); ?></div>
+            <?php } ?>
 
-                  <div class="addax-widget">
+            <?php if( $addax_theme_options['footer-widgets-layout'] == 4 ) { ?>
+              <div class="col-md-3"><?php dynamic_sidebar( 'addax_footer_one' ); ?></div>
+              <div class="col-md-3"><?php dynamic_sidebar( 'addax_footer_two' ); ?></div>
+              <div class="col-md-3"><?php dynamic_sidebar( 'addax_footer_three' ); ?></div>
+              <div class="col-md-3"><?php dynamic_sidebar( 'addax_footer_four' ); ?></div>
+            <?php } ?>
 
-                    <h2 class="widget-heading"> About Us</h2>
+          </div>
 
-                      <ul class="widget-menu">
-                        <li><a href="#">Core Values</a></li>
-                          <li><a href="#">Our Motive</a></li>
-                          <li><a href="#">Our Vision</a></li>
-                          <li><a href="#">Our Mission</a></li>
-                      </ul>
-
-                  </div>
-
-              </div>
-
-              <div class="col-md-3">
-
-                <div class="addax-widget">
-
-                    <h2 class="widget-heading"> Company</h2>
-
-                      <ul class="widget-menu">
-                        <li><a href="#">Privacy Policy</a></li>
-                          <li><a href="#">Terms & Conditions</a></li>
-                          <li><a href="#">Career</a></li>
-                          <li><a href="#">Services</a></li>
-                          <li><a href="#">Affiliates</a></li>
-                          <li><a href="#">Clients</a></li>
-
-                      </ul>
-
-                  </div>
-
-
-              </div>
-
-              <div class="col-md-3">
-
-                <div class="addax-widget">
-
-                      <h2 class="widget-heading"> Services</h2>
-
-                      <ul class="widget-menu">
-                        <li><a href="#">Web Hosting</a></li>
-                          <li><a href="#">Wordpress</a></li>
-                          <li><a href="#">Cloud Servers</a></li>
-                          <li><a href="#">Web Development</a></li>
-                          <li><a href="#">Graphic Designing</a></li>
-                          <li><a href="#">Email Marketing</a></li>
-                          <li><a href="#">Social Media Marketing</a></li>
-                          <li><a href="#">Search Engine Optimization</a></li>
-                      </ul>
-
-                  </div>
-
-              </div>
-
-              <div class="col-md-3">
-
-                <div class="addax-widget">
-
-                    <h2 class="widget-heading"> Support</h2>
-
-                      <ul class="widget-menu">
-                        <li><a href="#">Tutorials</a></li>
-                          <li><a href="#">FAQs</a></li>
-                          <li><a href="#">Help Center</a></li>
-                          <li><a href="#">Contact Us</a></li>
-                      </ul>
-
-                  </div>
-
-              </div>
-
+          <?php } ?>
 
           </div>
 

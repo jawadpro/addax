@@ -28,7 +28,6 @@
           $addax_header_one = array(
             'theme_location' => 'main-menu',
             'container' => '',
-            'echo' => true,
             'fallback_cb' => true,
             'items_wrap' => '%3$s',
             'walker' => new Addax_walker_nav_menu(),
