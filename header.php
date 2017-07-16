@@ -18,6 +18,7 @@
   <?php wp_head(); ?>
   </head>
   <body <?php body_class(); ?>>
-  <?php addax_header(); ?>
-
-  <?php echo do_shortcode('[addax-slider slider="home"]'); ?>
+  <?php
+  addax_header();
+  addax_page_slider();
+  ?>

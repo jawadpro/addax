@@ -17,6 +17,20 @@
          }
  }
 
+   /* ================ ADDAX SLIDER FUNCTION ============== */
+
+  if ( ! function_exists( 'addax_page_slider' ) ) {
+      function addax_page_slider() {
+            global $post;
+            $slider_page_meta = esc_attr( get_post_meta( $post->ID , 'page_header_shortcode' ,true ) );
+            if( !empty( $slider_page_meta ) )
+            {
+              echo do_shortcode($slider_page_meta);
+
+            }
+      }
+  }
+
 
   /* ================ ADDAX MAIN MENU ============== */
 

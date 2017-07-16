@@ -307,7 +307,7 @@
     transition:.3s ease all;
     -webkit-transition:.3s ease all;
     -moz-transition:.3s ease all;
-    opacity:0;   
+    opacity:0;
 }
 .addax-hero-controller button.ah-left-btn span{
     margin-right:-30px;
@@ -411,7 +411,7 @@
 }
 
 #addax-hero .ah-content .ah-holder.styler1{
-  padding:50px 0; 
+  padding:50px 0;
   text-align: center;
 }
 .ah-holder.styler1 a{
@@ -548,7 +548,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de000000', e
 
 
 #addax-hero .owl-ahSlide-out{
-  
+
   -webkit-animation: slideOutLeft 1.5s both ease;
   -moz-animation: slideOutLeft 1.5s both ease;
   animation: slideOutLeft 1.5s both ease;
@@ -915,7 +915,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de000000', e
 #addax-projects.style1 .ap-heading {
   margin: 0 0 50px 0;
 }
-#addax-projects .addax-filter-gallery > div{ 
+#addax-projects .addax-filter-gallery > div{
   transition:.5s ease width;
   -webkit-transition:.5s ease width;
   -moz-transition:.5s ease width;
@@ -1311,7 +1311,7 @@ input[type="submit"]:focus,button{
     margin-top:-1px;
 }
 
-#addax-testimonial.style1{
+#addax-testimonial.style1.parallax{
 
   background-attachment:fixed !important;
 }
@@ -1331,7 +1331,7 @@ input[type="submit"]:focus,button{
 #addax-testimonial.style1 .at-review p{
   padding: 50px 0;
   color: #fff;
-  font-size: 22px; 
+  font-size: 22px;
 }
 
 #addax-testimonial.style1 .client-info{
@@ -1461,7 +1461,7 @@ input[type="submit"]:focus,button{
 @media only screen and (max-width: 768px) {
   .addax-client-carousel:after{
   display:none;
-  } 
+  }
 }
 
 .addax-client-carousel:hover:after{
@@ -1576,7 +1576,7 @@ input[type="submit"]:focus,button{
 /*addax team members*/
 #addax-team-grid{
 	width:100%;
-	
+
 	display:flex;
 }
 #addax-team-grid .team-grid{
@@ -1585,7 +1585,7 @@ input[type="submit"]:focus,button{
 	overflow:hidden;
 	position:relative;
 	cursor:pointer;
-	
+
 }
 .team-grid.team-heading{
 	padding:20px 20px 20px 50px;
@@ -1660,7 +1660,7 @@ input[type="submit"]:focus,button{
 	transition:.3s ease-in all;
 	-webkit-transition:.3s ease-in all;
 	-moz-transition:.3s ease-in all;
-	opacity:0;	
+	opacity:0;
 	background: -moz-linear-gradient(top,  rgba(165,75,205,0) 0%, rgba(165,75,205,0.52) 65%, rgba(165,75,205,0.66) 75%, rgba(0,118,255,0.99) 99%, rgba(0,118,255,1) 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top,  rgba(165,75,205,0) 0%,rgba(165,75,205,0.52) 65%,rgba(165,75,205,0.66) 75%,rgba(0,118,255,0.99) 99%,rgba(0,118,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom,  rgba(165,75,205,0) 0%,rgba(165,75,205,0.52) 65%,rgba(165,75,205,0.66) 75%,rgba(0,118,255,0.99) 99%,rgba(0,118,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */

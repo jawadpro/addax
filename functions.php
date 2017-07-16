@@ -59,4 +59,5 @@
 
     /* ================ ADDAX MENU LOCATIONS ============== */
 
-    add_image_size( 'addax-client-img', 80, 80 );
+    add_image_size( 'addax-info-box-img', 180, 180 );
+    add_image_size( 'addax-testimonial-img', 60, 60 );

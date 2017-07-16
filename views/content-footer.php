@@ -4,7 +4,7 @@
 */
 
 global $addax_theme_options;
-
+$copyright = ( isset( $addax_theme_options['footer-copyright-text'] ) ) ? $addax_theme_options['footer-copyright-text'] : 'Addax , 2016 All Rights Reserved';
 ?>
 <footer id="addax-footer">
 
@@ -38,7 +38,7 @@ global $addax_theme_options;
 
           </div>
 
-
+          <?php if( isset( $addax_theme_options['footer-social-sec'] ) && $addax_theme_options['footer-social-sec'] == true ) { ?>
           <div class="row">
 
 
@@ -62,6 +62,8 @@ global $addax_theme_options;
 
           </div>
 
+          <?php } ?>
+
 
 
           <div class="row">
@@ -70,7 +72,7 @@ global $addax_theme_options;
             <div class="col-sm-12">
 
                 <div class="footer-credits">
-                    <h4>Addax , 2016 All Rights Reserved</h4>
+                    <h4><?php echo _e( $copyright, 'addax' ); ?></h4>
                   </div>
 
               </div>

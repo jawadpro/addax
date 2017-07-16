@@ -59,3 +59,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0076ff', end
 	top:50%;
 	transform:translate(-50%,-50%);
 }
+
+#addax-header.style1.isSticky .navbar a
+{
+	color: #555 !important;
+}
