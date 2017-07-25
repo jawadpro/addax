@@ -27,7 +27,7 @@ function addax_meta_boxes( $meta_boxes ) {
 												'type'	=> 'image_advanced',
 												'max_file_uploads' => 1,
 												'max_status' => false,
-												'desc' => __('Upload/Select background image for your slider.' , 'addax'),
+												'desc' => __('Upload/Select background image for your slide.' , 'addax'),
 											),
 
 										array(
@@ -41,22 +41,23 @@ function addax_meta_boxes( $meta_boxes ) {
 												),
 											),
 
-										// array(
-										// 		'id' 	=> 'background_parallex',
-										// 		'name'	=> __( 'Enable Parallex' , 'addax' ),
-										// 		'type'	=> 'select',
-										// 		'desc' => __('Make your slide parallex from here.' , 'addax'),
-										// 		'options' => array(
-										// 			'yes' 	=>  __('Yes' , 'addax') ,
-										// 			'no'		=> __('No' , 'addax'),
-										// 		),
-										// ),
+										array(
+													'id' 	=> 'btn_form_option',
+													'name'	=> __( 'Use Button/Subscription Form' , 'addax' ),
+													'type'	=> 'select',
+													'desc' => __('Select option to use buttons or form on slider.' , 'addax'),
+													'options' => array(
+														'form' 	=>  __('Subscription Form' , 'addax') ,
+														'button'		=> __('Buttons' , 'addax'),
+													),
+											),
 
 										array(
 												'id' 	=> 'button_one_text',
 												'name'	=> __( 'Button1 Text' , 'addax' ),
 												'type'	=> 'text',
 												'desc' => __('Enter text for button1. Leave empty if you don\'t want to show button on slide.' , 'addax'),
+												'visible' => [ 'btn_form_option' , 'button'  ]
 										),
 
 										array(
@@ -64,6 +65,7 @@ function addax_meta_boxes( $meta_boxes ) {
 												'name'	=> __( 'Button1 Link' , 'addax' ),
 												'type'	=> 'text',
 												'desc' => __('Enter link for button1.' , 'addax'),
+												'visible' => [ 'btn_form_option' , 'button'  ]
 										),
 
 										array(
@@ -71,6 +73,7 @@ function addax_meta_boxes( $meta_boxes ) {
 												'name'	=> __( 'Button2 Text' , 'addax' ),
 												'type'	=> 'text',
 												'desc' => __('Enter text for button2. Leave empty if you don\'t want to show button on slide.' , 'addax'),
+												'visible' => [ 'btn_form_option' , 'button'  ]
 										),
 
 										array(
@@ -78,6 +81,7 @@ function addax_meta_boxes( $meta_boxes ) {
 												'name'	=> __( 'Button2 Link' , 'addax' ),
 												'type'	=> 'text',
 												'desc' => __('Enter link for button2.' , 'addax'),
+												'visible' => [ 'btn_form_option' , 'button'  ]
 										),
 
 										array(
@@ -140,11 +144,51 @@ function addax_meta_boxes( $meta_boxes ) {
 											'id' 	=> 'page_header_shortcode',
 											'name'	=> __( 'Slider Shortcode' , 'addax' ),
 											'type'	=> 'text',
-											'desc' => __('You can user Addax Slider, Revolution Slider or Layer Slider etc shortcode here.' , 'addax'),
+											'desc' => __('You can use Addax Slider, Revolution Slider or Layer Slider etc shortcode here.' , 'addax'),
 									),
 
 	)
 );
+
+$meta_boxes[] = array(
+			'title'      => __( 'Page Title Bar Options', 'addax' ),
+			'post_types' => array('page'),
+			'fields'     => array(
+
+				array(
+						'id' 	=> 'page_title_bar_display',
+						'name'	=> __( 'Show/Hide Page Title Bar' , 'addax' ),
+						'type'	=> 'select',
+						'desc' => __('Select option if you want to show/hide page title bar.' , 'addax'),
+						'options' => array(
+							'show' 	=>  __('Show' , 'addax') ,
+							'hide'		=> __('Hide' , 'addax'),
+						),
+					),
+
+				array(
+						'id' 	=> 'page_title_sub_heading',
+						'name'	=> __( 'Page Title Sub Heading' , 'addax' ),
+						'type'	=> 'text',
+						'desc' => __('Enter sub heading for your title.' , 'addax'),
+						'visible' => [ 'page_title_bar_display' , 'show'  ]
+					),
+
+					array(
+							'id' 	=> 'page_title_background',
+							'name'	=> __( 'Title Bar Background' , 'addax' ),
+							'type'	=> 'select',
+							'desc' => __('Select option if you want to show/hide page title bar.' , 'addax'),
+							'options' => array(
+								'color' 	=>  __('Color' , 'addax') ,
+								'image'		=> __('Image' , 'addax'),
+							),
+						),
+
+)
+);
+
+
 
 // TESTIMONIAL POST TYPE METABOX
 $meta_boxes[] = array(
@@ -180,6 +224,32 @@ $meta_boxes[] = array(
 )
 );
 
+// TEAM POST TYPE METABOX
+
+$meta_boxes[] = array(
+			'title'      => __( 'Team Member Info', 'addax' ),
+			'post_types' => array('adx-team'),
+			'fields'     => array(
+
+
+								array(
+										'id' 	=> 'team_member_positon',
+										'name'	=> __( 'Team Member Position' , 'addax' ),
+										'type'	=> 'text',
+										'desc' => __('Enter team member position in company.' , 'addax'),
+								),
+
+								array(
+										'id' 	=> 'team_member_image',
+										'name'	=> __( 'Team Member Image' , 'addax' ),
+										'type'	=> 'image_advanced',
+										'max_file_uploads' => 1,
+										'max_status' => false,
+										'desc' => __('Upload/Select image.' , 'addax'),
+									),
+
+)
+);
 
 return $meta_boxes;
 	}

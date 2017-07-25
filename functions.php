@@ -10,6 +10,7 @@
 
   /* ================ ADDAX INCLUDE FILES ============== */
 
+    //Theme Files Include
    require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-walker-menu.php' );
    require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-frontend-functions.php' );
    require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-custom-style.php' );
@@ -42,7 +43,10 @@
     //wp_enqueue_script( 'addax-map-api-js' , 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB_FOwS1sfvZkhjueoLFRY0s-j_k1CbKn8', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-smart-menus-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.min.js' , array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-smart-menus-bts-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.bootstrap.js' , array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-carousel-js' , ADDAX_TEMPLATE_URI . '/assets/js/custom.js', array( 'jquery' ), '' , true  );
+    wp_enqueue_script( 'addax-custom-js' , ADDAX_TEMPLATE_URI . '/assets/js/custom.js', array( 'jquery' ), '' , true  );
+
+    //Addax Ajax URL
+    wp_localize_script( 'addax-custom-js', 'adx_ajax_object',  array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
   }
 
     /* ================ ADDAX THEME SUPPORTS ============== */
@@ -61,3 +65,4 @@
 
     add_image_size( 'addax-info-box-img', 180, 180 );
     add_image_size( 'addax-testimonial-img', 60, 60 );
+    add_image_size( 'addax-team-member-img', 337, 448 );

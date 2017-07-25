@@ -69,7 +69,7 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="#">
+         <a class="navbar-brand" href="<?php echo home_url(); ?>">
            <img src="<?php echo $addax_logo; ?>" class="main-logo">
            <img src="<?php echo $addax_sticky_logo; ?>" class="sticky-logo">
          </a>
