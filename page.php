@@ -11,18 +11,29 @@
  * @since Addax 1.0
  */
 
-get_header();
+get_header(); ?>
 
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <?php
       // Start the loop.
       while ( have_posts() ) : the_post();
 
         // Include the page content template.
-
-        get_template_part( 'views/content', 'page' );
+        the_content();
+        //get_template_part( 'views/content', 'page' );
 
         // End of the loop.
       endwhile;
+      ?>
 
-get_footer();
+    </div>
 
-?>
+  </div>
+
+</div>
+
+<?php get_footer(); ?>

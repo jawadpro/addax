@@ -482,28 +482,3 @@ jQuery(document).ready(function(){
 	});
 
 	new WOW().init();
-
-
-// Subscription Form
-jQuery(document).ready(function() {
-
-	jQuery( '.subscription-form' ).submit(function(e) {
-		e.preventDefault();
-		var sname = jQuery('.subscription-name').val();
-		var semail = jQuery('.subscription-email').val();
-
-		jQuery.ajax({
-			type : "post",
-			url : adx_ajax_object.ajax_url,
-			data : { action: "subscription_form_callback", name : sname , email : semail },
-			success: function(response) {
-				 if(response) {
-					alert(response);
-				 }
-			}
-	 });
-
-
-	});
-
-});
