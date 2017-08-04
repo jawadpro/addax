@@ -11,7 +11,9 @@
  * @since Addax 1.0
  */
 
-get_header(); ?>
+get_header();
+
+?>
 
 <div class="container">
 

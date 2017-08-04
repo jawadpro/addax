@@ -19,6 +19,8 @@
   </head>
   <body <?php body_class(); ?>>
   <?php
+  global $post;
   addax_header();
+  addax_title_bar( $post->ID );
   addax_page_slider();
   ?>

@@ -3,6 +3,17 @@ if ( ! function_exists( 'addax_register_widgets' ) ) {
 	function addax_register_widgets() {
 
 		register_sidebar(
+      array(
+        'name'          => esc_html__( 'Default Sidebar', 'addax' ),
+        'id'            => 'default_sidebar',
+        'before_widget' => '<div class="addax-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<div class="widget-title"><h4>',
+        'after_title'   => '</h4></div>'
+      )
+    );
+
+		register_sidebar(
 			array(
 				'name'          => esc_html__( 'Footer Widget 1', 'addax' ),
 				'id'            => 'addax_footer_one',

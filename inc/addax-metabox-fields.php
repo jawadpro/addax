@@ -41,17 +41,6 @@ function addax_meta_boxes( $meta_boxes ) {
 												),
 											),
 
-										// array(
-										// 		'id' 	=> 'background_parallex',
-										// 		'name'	=> __( 'Enable Parallex' , 'addax' ),
-										// 		'type'	=> 'select',
-										// 		'desc' => __('Make your slide parallex from here.' , 'addax'),
-										// 		'options' => array(
-										// 			'yes' 	=>  __('Yes' , 'addax') ,
-										// 			'no'		=> __('No' , 'addax'),
-										// 		),
-										// ),
-
 										array(
 												'id' 	=> 'button_one_text',
 												'name'	=> __( 'Button1 Text' , 'addax' ),
@@ -130,22 +119,6 @@ function addax_meta_boxes( $meta_boxes ) {
 		)
 	);
 
-// PAGE METABOXES
-	$meta_boxes[] = array(
-				'title'      => __( 'Page Slider Option', 'addax' ),
-				'post_types' => array('page'),
-				'fields'     => array(
-
-									array(
-											'id' 	=> 'page_header_shortcode',
-											'name'	=> __( 'Slider Shortcode' , 'addax' ),
-											'type'	=> 'text',
-											'desc' => __('You can user Addax Slider, Revolution Slider or Layer Slider etc shortcode here.' , 'addax'),
-									),
-
-	)
-);
-
 // TESTIMONIAL POST TYPE METABOX
 $meta_boxes[] = array(
 			'title'      => __( 'Testimonial Options', 'addax' ),
@@ -179,6 +152,117 @@ $meta_boxes[] = array(
 
 )
 );
+
+// PAGE METABOXES
+	$meta_boxes[] = array(
+				'title'      => __( 'Page Options', 'addax' ),
+				'post_types' => array('page' , 'post'),
+				'fields'     => array(
+
+									array(
+											'type'	=> 'heading',
+											'name'	=> __( 'Page Slider' , 'addax' ),
+									),
+
+									array(
+											'id' 	=> 'page_header_shortcode',
+											'name'	=> __( 'Slider Shortcode' , 'addax' ),
+											'type'	=> 'text',
+											'desc' => __('You can user Addax Slider, Revolution Slider or Layer Slider etc shortcode here.' , 'addax'),
+									),
+
+									array(
+											'type'	=> 'heading',
+											'name'	=> __( 'Page Title Bar' , 'addax' ),
+									),
+
+									array(
+											'id' 	=> 'title_bar_show',
+											'name'	=> __( 'Hide Title Bar' , 'addax' ),
+											'type'	=> 'checkbox',
+									),
+
+									array(
+											'id' 	=> 'title_bar_subheading',
+											'name'	=> __( 'Title Bar Sub Heading' , 'addax' ),
+											'type'	=> 'text',
+											'visible' => ['title_bar_show', false]
+									),
+
+									array(
+											'id' 	=> 'title_bar_content_position',
+											'name'	=> __( 'Title Bar Content Position' , 'addax' ),
+											'type'	=> 'select',
+											'options' => array(
+												'left' 	=>  __('Left' , 'addax') ,
+												'right'	=> __('Right' , 'addax'),
+												'center'	=> __('Center' , 'addax')
+											),
+											'visible' => ['title_bar_show', false]
+									),
+
+									array(
+											'id' 	=> 'title_bar_background',
+											'name'	=> __( 'Title Bar Background Type' , 'addax' ),
+											'type'	=> 'select',
+											'options' => array(
+												'color' 	=>  __('Color' , 'addax') ,
+												'image'		=> __('Image' , 'addax'),
+											),
+											'visible' => ['title_bar_show', false]
+									),
+
+									array(
+											'id' 	=> 'title_bar_bg_color',
+											'name'	=> __( 'Title Bar Background Color' , 'addax' ),
+											'type'	=> 'color',
+											'visible' => [
+												    'when' => [
+												        ['title_bar_background', 'color'],
+												        ['title_bar_show', false]
+												    ],
+												    'relation' => 'and'
+												]
+									),
+
+									array(
+											'id' 	=> 'title_bar_bg_image',
+											'name'	=> __( 'Title Bar Background Image' , 'addax' ),
+											'type'	=> 'image_advanced',
+											'max_file_uploads' => 1,
+											'max_status' => false,
+											'visible' => [
+												    'when' => [
+												        ['title_bar_background', 'image'],
+												        ['title_bar_show', false]
+												    ],
+												    'relation' => 'and'
+												]
+										),
+
+										array(
+												'id' 	=> 'title_bar_bg_parallax',
+												'name'	=> __( 'Enable Background Parallax' , 'addax' ),
+												'type'	=> 'checkbox',
+												'visible' => [
+													    'when' => [
+													        ['title_bar_background', 'image'],
+													        ['title_bar_show', false]
+													    ],
+													    'relation' => 'and'
+													]
+										),
+
+										array(
+												'id' 	=> 'title_bar_txt_color',
+												'name'	=> __( 'Title Bar Text Color' , 'addax' ),
+												'type'	=> 'color',
+												'visible' => ['title_bar_show', false]
+										),
+
+	)
+);
+
 
 
 return $meta_boxes;

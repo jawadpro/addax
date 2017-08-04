@@ -482,3 +482,37 @@ jQuery(document).ready(function(){
 	});
 
 	new WOW().init();
+
+ // var masonry = new Macy({
+ //  container: '#addax-masonry',
+ //  trueOrder: false,
+ //  waitForImages: false,
+ //  debug: true,
+ //  margin: {
+ // 		 x: 15,
+ // 		 y: 15
+ //  },
+ //  columns: 2,
+ //  breakAt: {
+ // 	 1200: {
+ // 		 columns: 2,
+ // 		 margin: {
+ // 				 x: 23,
+ // 				 y: 4
+ // 		 }
+ // 	 },
+ // 	 940: {
+ // 		 columns: 2,
+ // 		 margin: {
+ // 				 y: 23
+ // 		 }
+ // 	 },
+ // 	 520: {
+ // 		 columns: 1,
+ // 		 margin: 10,
+ // 	 },
+ // 	 400: {
+ // 		 columns: 1
+ // 	 }
+ //  }
+ // });
