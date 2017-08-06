@@ -42,6 +42,7 @@
     //wp_enqueue_script( 'addax-map-api-js' , 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB_FOwS1sfvZkhjueoLFRY0s-j_k1CbKn8', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-smart-menus-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.min.js' , array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-smart-menus-bts-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.bootstrap.js' , array( 'jquery' ), '' , true  );
+    wp_enqueue_script( 'addax-mixit-up-js' , ADDAX_TEMPLATE_URI . '/assets/js/mixitup.min.js' , array( 'jquery' ), '' , true  );
     //wp_enqueue_script( 'addax-macy-js' , ADDAX_TEMPLATE_URI . '/assets/js/macy.js', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-custom-js' , ADDAX_TEMPLATE_URI . '/assets/js/custom.js', array( 'jquery' ), '' , true  );
   }

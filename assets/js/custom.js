@@ -77,7 +77,9 @@ jQuery(document).ready(function(){
 	 		      slideSpeed : 500,
 	 		      paginationSpeed : 500,
 	 		      singleItem : true,
-	               mouseDrag : false,
+	          mouseDrag : false,
+						autoplay:true,
+						autoplayTimeout:5000,
 	 		      addClassActive : true,
 	 		      pagination : true,
 
@@ -473,7 +475,69 @@ jQuery(document).ready(function(){
             }
 
 
-        })
+        });
+
+
+				// addax lightbox
+
+				jQuery('#addax-lightbox').hide();
+
+				jQuery('.addax-lb-trigger').click(function(e) {
+
+				    e.preventDefault();
+				    var image_href = jQuery(this).attr("href");
+				    if (jQuery('#addax-lightbox').length > 0) { // #lightbox exists
+
+				        //insert img tag with clicked link's href as src value
+				        jQuery('#lightbox-content').html('<div class="lb-img"><img src="' + image_href + '" class="animated zoomIn"/></div>');
+
+				        //show liglighthtbox window - you can use a transition here if you want, i.e. .show('fast')
+				        jQuery('#addax-lightbox').fadeIn(function(){jQuery(this).show()});
+				    }
+				    else { //#lightbox does not exist
+
+				        //create HTML markup for lightbox window
+				        var lightbox =
+
+				          '<div id="addax-lightbox" >'+
+				            '<a href="#" class="close-lightbox">'+
+				              '<i class="fa fa-times" aria-hidden="true"></i>'+
+				            '</a>'+
+				          '</div>';
+
+
+				        //insert lightbox HTML into page
+				        jQuery('body').append(lightbox);
+				    }
+
+
+				});
+
+
+				//Click anywhere on the page to get rid of lightbox window
+				jQuery('.close-lightbox').on('click', function(e) {
+				e.preventDefault();
+				jQuery('#addax-lightbox').hide();
+				});
+
+				/*addax progress bar*/
+
+				    jQuery('.ap-bar').waypoint(function(){
+
+
+				        jQuery('.ap-bar').each(function(){
+
+				            jQuery(this).find('.ap-progress').animate({
+				                width:jQuery(this).attr('data-percent')
+				            },2000);
+				            jQuery(this).find('.ap-progress').css({
+				                background:jQuery(this).attr('data-bgcolor')
+				            });
+
+				        });
+
+				    },{offset : '80%'});
+
 
 //custom
 	jQuery(document).ready(function(){
@@ -516,3 +580,7 @@ jQuery(document).ready(function(){
  // 	 }
  //  }
  // });
+
+
+ //mixit up
+    var mixer = mixitup('.addax-filter-gallery');

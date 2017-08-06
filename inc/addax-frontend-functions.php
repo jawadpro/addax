@@ -71,37 +71,37 @@
   if ( ! function_exists( 'addax_title_bar' ) ) {
     function addax_title_bar( $post_id )
     {
-      $title_bar_visible = get_post_meta( $post_id, 'title_bar_show' , true );
-      $title_bar_subheading = get_post_meta( $post_id, 'title_bar_subheading' , true );
-      $title_bar_bg_color= get_post_meta( $post_id, 'title_bar_bg_color' , true );
-      $title_bar_background = get_post_meta( $post_id, 'title_bar_background' , true );
-      $title_bar_bg_image = get_post_meta( $post_id, 'title_bar_bg_image' , true );
-      $title_bar_txt_color = get_post_meta( $post_id, 'title_bar_txt_color' , true );
-      $title_bar_content_position = get_post_meta( $post_id, 'title_bar_content_position' , true );
-      $title_bar_bg_parallax = get_post_meta( $post_id, 'title_bar_bg_parallax' , true );
 
-      // TITLE BAR BACKGROUND
-      $bg = '';
-      if( $title_bar_background == 'color' && !empty( $title_bar_bg_color ) )
-      {
-        $bg = 'background:' . $title_bar_bg_color . ';';
-      }
-      if( $title_bar_background == 'image' && !empty( $title_bar_bg_image ) )
-      {
-          $title_bg_url = wp_get_attachment_image_src( $title_bar_bg_image , 'full' );
-          $bg = 'background-image:url(' . $title_bg_url[0] . ');' ;
-          $bg .= 'background-size:cover;';
-          $bg .= 'background-repeat:no-repeat;';
-          $bg .= 'background-position:center;';
+        $title_bar_visible = get_post_meta( $post_id, 'title_bar_show' , true );
+        $title_bar_subheading = get_post_meta( $post_id, 'title_bar_subheading' , true );
+        $title_bar_bg_color= get_post_meta( $post_id, 'title_bar_bg_color' , true );
+        $title_bar_background = get_post_meta( $post_id, 'title_bar_background' , true );
+        $title_bar_bg_image = get_post_meta( $post_id, 'title_bar_bg_image' , true );
+        $title_bar_txt_color = get_post_meta( $post_id, 'title_bar_txt_color' , true );
+        $title_bar_content_position = get_post_meta( $post_id, 'title_bar_content_position' , true );
+        $title_bar_bg_parallax = get_post_meta( $post_id, 'title_bar_bg_parallax' , true );
 
-          //CHECKING IF BACKGROUND PARALLAX IS ENABLE
-          if( $title_bar_bg_parallax == true )
-          {
-            $bg .= 'background-attachment:fixed;';
-          }
-      }
+        // TITLE BAR BACKGROUND
+        $bg = '';
+        if( $title_bar_background == 'color' && !empty( $title_bar_bg_color ) )
+        {
+          $bg = 'background:' . $title_bar_bg_color . ';';
+        }
+        if( $title_bar_background == 'image' && !empty( $title_bar_bg_image ) )
+        {
+            $title_bg_url = wp_get_attachment_image_src( $title_bar_bg_image , 'full' );
+            $bg = 'background-image:url(' . $title_bg_url[0] . ');' ;
+            $bg .= 'background-size:cover;';
+            $bg .= 'background-repeat:no-repeat;';
+            $bg .= 'background-position:center;';
 
-
+            //CHECKING IF BACKGROUND PARALLAX IS ENABLE
+            if( $title_bar_bg_parallax == true )
+            {
+              $bg .= 'background-attachment:fixed;';
+            }
+        }
+      
       // CHECK IF TITLE BAR IS NOT DISABLE AND ITS NOT FRONTPAGE
       if( $title_bar_visible == false && !is_front_page() ) {
       ?>

@@ -78,7 +78,7 @@
 
 
          <!-- Right nav -->
-         <ul class="nav navbar-nav navbar-right">
+         <ul class="nav navbar-nav navbar-right dropStyle1 dropLight">
           <?php addax_main_menu(); ?>
           <?php if( $addax_search == true ): ?>
              <li class="h-icon s-toggle"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
