@@ -1,21 +1,101 @@
+/*addax-dropdown*/
 
-#addax-navBar .dropdown-menu > li > a{
-  padding:10px 15px;
-}
-#addax-header .dropdown-menu{
-    box-shadow:none;
-    border:1px solid rgba(0,0,0,0.05);
-    border-radius:0;
-    padding:5px;
-}
-#addax-header .dropdown-menu li a:hover{
-  background-color:#0076ff;
-  color:#fff;
-}
 @media only screen and (min-width : 1100px){
   #addax-header .dropdown-menu{
     box-shadow:0 3px 5px rgba(0,0,0,.15);
   }
+  
+.navbar-nav li ul{
+  list-style: none;
+  position: absolute;
+  padding:0;
+  left:0;
+  border-radius: 6px
+}
+.navbar-nav li ul li:first-child > a{
+  border-top-left-radius : 6px;
+  border-top-right-radius: 6px;
+}
+.navbar-nav li ul li:last-child > a{
+  border-bottom-left-radius : 6px;
+  border-bottom-right-radius: 6px;
+}
+.navbar-nav > li.edge > ul{
+  right:0;
+  left: auto;
+}
+
+.navbar-nav.dropLight ul{
+  background:rgba(255,255,255,.95);
+}
+.navbar-nav.dropLight ul li a{
+  color:#333;
+}
+
+.navbar-nav.dropDark ul{
+  background:rgba(51,51,51,.95)
+}
+.navbar-nav.dropDark ul li a{
+  color:#fff;
+}
+
+.navbar-nav.dropStyle1 ul{
+  box-shadow: 0 2px 15px rgba(0,0,0,.2);
+}
+
+.navbar-nav li > ul > li a{
+    display: block;
+    padding: 1em 4em;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+
+}
+
+.navbar-nav.dropStyle1 ul {
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s ease-in-out all;
+  -webkit-transition: .3s ease-in-out all;
+  -moz-transition: .3s ease-in-out all;
+  transform: translateY(10px);
+}
+.navbar-nav.dropStyle1 li{
+  position: relative;
+}
+.navbar-nav.dropStyle1 li ul a{
+}
+.navbar-nav.dropStyle1 li ul a:hover {
+  background:#0076ff;
+  color:#fff;
+}
+.navbar-nav.dropStyle1 ul ul {
+  top:0;
+  transition: .3s ease-in-out opacity;
+  -webkit-transition: .3s ease-in-out opacity;
+  -moz-transition: .3s ease-in-out opacity; 
+  transform: translateX(-20px) translateY(0);
+}
+.navbar-nav.dropStyle1 li:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+.navbar-nav.dropStyle1 ul li:hover > ul {
+  left:100%;
+  margin-left: 1px;
+  transform: translateX(0) translateY(0);
+}
+.navbar-nav.dropStyle1 ul li.edge:hover > ul {
+  left:-100%;
+  margin-left: -1px;
+  transform: translateX(0) translateY(0);
+}
+
+
+
+
 }
 @media only screen and (max-width : 1099px) {
 	#addax-header .dropdown-menu li a:hover {

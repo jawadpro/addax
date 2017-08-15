@@ -87,7 +87,7 @@
         {
           $bg = 'background:' . $title_bar_bg_color . ';';
         }
-        if( $title_bar_background == 'image' && !empty( $title_bar_bg_image ) )
+        elseif( $title_bar_background == 'image' && !empty( $title_bar_bg_image ) )
         {
             $title_bg_url = wp_get_attachment_image_src( $title_bar_bg_image , 'full' );
             $bg = 'background-image:url(' . $title_bg_url[0] . ');' ;
@@ -100,6 +100,10 @@
             {
               $bg .= 'background-attachment:fixed;';
             }
+        }
+        else
+        {
+            $bg = 'background:#0076FF;';
         }
       
       // CHECK IF TITLE BAR IS NOT DISABLE AND ITS NOT FRONTPAGE

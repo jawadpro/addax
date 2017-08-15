@@ -45,6 +45,11 @@
     wp_enqueue_script( 'addax-mixit-up-js' , ADDAX_TEMPLATE_URI . '/assets/js/mixitup.min.js' , array( 'jquery' ), '' , true  );
     //wp_enqueue_script( 'addax-macy-js' , ADDAX_TEMPLATE_URI . '/assets/js/macy.js', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-custom-js' , ADDAX_TEMPLATE_URI . '/assets/js/custom.js', array( 'jquery' ), '' , true  );
+
+    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') ) {
+  wp_enqueue_script( 'comment-reply' );
+}
+
   }
 
   //ADMIN ENQUEUE
