@@ -1940,6 +1940,7 @@ input[type="submit"]:focus,button{
   width:100%;
   padding:30px 0 ;
   background:#192d5b;
+  color:rgba(255,255,255,.8);
 }
 .addax-footer-social{
   width:100%;
@@ -1961,6 +1962,62 @@ input[type="submit"]:focus,button{
 .footer-credits h4{
   font-size:12px;
   color:#fff;
+}
+#addax-footer .searchform{
+  width:100%;
+  display:inline-block;
+}
+
+#addax-footer .searchform input {
+  height:40px;
+  padding:0 15px;
+  border-radius: 0;
+  color:#333;
+}
+#addax-footer .searchform button {
+  background:#0076ff;
+  line-height: 38px;
+  color:#fff;
+}
+#addax-footer .widget-heading{
+  color:#fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  position: relative;
+}
+#addax-footer .widget-heading:after{
+  content:'';
+  position: absolute;
+  left:0;
+  bottom:-15px;
+  background:#fff;
+  width:20px;
+  height: 2px;
+}
+#addax-footer ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+#addax-footer ul li{
+  margin-bottom: 5px;
+}
+
+#addax-footer ul li a{
+  color:#fff;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  color:rgba(255,255,255,.8);
+}
+
+#addax-footer ul li a:hover{
+ color:rgba(255,255,255,1); 
+}
+#addax-footer ul ul{
+  display: none;
 }
 
 /*addax cta banner*/
@@ -2535,6 +2592,7 @@ input[type="submit"]:focus,button{
   margin-bottom:35px;
 }
 
+
 .addax-widget .searchform{
   width:100%;
   display:inline-block;
@@ -2603,25 +2661,40 @@ input[type="submit"]:focus,button{
   color:#fff;
   background:#0076ff;
 }
-.addax-sidebar.style2 ul ,.addax-sidebar.style2 .textwidget{
+.addax-sidebar.style2 ul{
   width:100%;
+  padding:0px;
+  margin:0;
+  list-style: none;
+  border:1px solid rgba(0,0,0,.1);
+  margin-bottom:10px;
+}
+.addax-sidebar.style2 .textwidget{
   padding:15px;
   border:1px solid rgba(0,0,0,.1);
   margin-bottom:10px;
 }
 
-.addax-sidebar ul, .addax-sidebar ul li{
-  list-style:none;
-  margin:0;
-  width: 100%;
-  display: inline-block;
-  padding:0;
+.addax-sidebar .addax-widget ul li{
+  padding:10px 10px 10px 25px;
+  position: relative;
+}
+.addax-sidebar .addax-widget ul li:before{
+  content:"\f105";
+  font-family:FontAwesome;
+  position: absolute;
+  left: 10px;
 }
 
-.addax-sidebar ul{
-  width:100%;
-  display: inline-block;
+.addax-widget ul li a{
+  color:#333;
 }
+
+.addax-widget ul li a:hover{
+  color:#0076ff;
+}
+
+
 
 .addax-sidebar .popular-posts li{
   height:100%;
