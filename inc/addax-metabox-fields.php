@@ -156,7 +156,7 @@ $meta_boxes[] = array(
 // PAGE METABOXES
 	$meta_boxes[] = array(
 				'title'      => __( 'Page Options', 'addax' ),
-				'post_types' => array('page' , 'post'),
+				'post_types' => array('page'),
 				'fields'     => array(
 
 									array(

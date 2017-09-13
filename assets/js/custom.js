@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-    
+
     jQuery.fn.exists = function(){ return this.length > 0; }
 
 
@@ -14,7 +14,7 @@ jQuery(document).ready(function(){
         e.preventDefault();
         jQuery('header').toggleClass('s-open')
     })
-    
+
 
 
 
@@ -31,16 +31,16 @@ jQuery(document).ready(function(){
              jQuery('.at-nav .prev').click(function(){
                 atCar.trigger('owl.prev')
              })
-        }     
+        }
 
 
         /*-----------addax client carousel ------------*/
-    
-    
+
+
         if (jQuery('.addax-client-carousel').exists()) {
             var addaxClientCarousel = jQuery('.addax-client-carousel'),
                 ClientQty = addaxClientCarousel.attr("data-client-quantity");
-            
+
              addaxClientCarousel.owlCarousel({
                   stagePadding: 50,
                   loop:true,
@@ -64,20 +64,25 @@ jQuery(document).ready(function(){
 
          /*addax hero slider 1*/
 
-        if (jQuery('#addax-hero').exists()) {    
+        if (jQuery('#addax-hero').exists()) {
              var ahCar = jQuery("#addax-hero");
                 //Init the carousel
                 ahCar.owlCarousel({
+                  items:1,
                   slideSpeed : 500,
+                  loop:true,
                   paginationSpeed : 500,
-                  singleItem : true,
+                  //singleItem : true,
                   mouseDrag : false,
                   addClassActive : true,
                   pagination : true,
-                  
+                  autoPlay:true,
+                  autoPlayTimeout:5000,
+                  rewind:false
+
                 });
         }
-         
+
         // Custom Navigation Events
         jQuery(".addax-hero-controller .ah-right-btn").click(function(){
          ahCar.trigger('owl.next');
@@ -86,16 +91,16 @@ jQuery(document).ready(function(){
          ahCar.trigger('owl.prev');
         })
 
-          
-          
-          
-          
-          
-          
+
+
+
+
+
+
     /*****************************************
     Counter Box
     /*****************************************/
-    
+
         if (jQuery('.counter').exists()) {
 
             (function( $ ){
@@ -185,8 +190,8 @@ jQuery(document).ready(function(){
                 time: 1000
             });
        }
-    
-    
+
+
     /*****************************************
     Donut Chart
     /*****************************************/
@@ -371,16 +376,16 @@ jQuery(document).ready(function(){
                     });
                 };
              })( jQuery );
-            
-                jQuery(".addax-donut-chart").addaxDonutChart(); 
+
+                jQuery(".addax-donut-chart").addaxDonutChart();
           }
 
     //Scroll Down
-    
+
     jQuery('.scrollDown').click(function(event){
             event.preventDefault();
             var winHeight = jQuery(window).height();
-            
+
              jQuery('html, body').animate({
                     scrollTop: winHeight,
                     complete: function () {
@@ -407,18 +412,18 @@ jQuery(document).ready(function(){
     // Filter button
 
          var filterBtn = jQuery('.addax-filters .filter');
-      
+
             filterBtn.click(function(event){
 
              event.preventDefault();
 
-             var selectedFilter = jQuery(this);  
-                 
+             var selectedFilter = jQuery(this);
+
                filterBtn.removeClass('selected');
                selectedFilter.addClass('selected');
-            
 
-            
+
+
             });
 
 
@@ -427,21 +432,21 @@ jQuery(document).ready(function(){
         jQuery('#addax-lightbox').hide();
 
         jQuery('.addax-lb-trigger').click(function(e) {
-    
+
             e.preventDefault();
             var image_href = jQuery(this).attr("href");
             if (jQuery('#addax-lightbox').length > 0) { // #lightbox exists
-                
+
                 //insert img tag with clicked link's href as src value
                 jQuery('#lightbox-content').html('<div class="lb-img"><img src="' + image_href + '" class="animated zoomIn"/></div>');
-                
+
                 //show liglighthtbox window - you can use a transition here if you want, i.e. .show('fast')
                 jQuery('#addax-lightbox').fadeIn(function(){jQuery(this).show()});
             }
-            else { //#lightbox does not exist 
-    
+            else { //#lightbox does not exist
+
                 //create HTML markup for lightbox window
-                var lightbox = 
+                var lightbox =
 
                   '<div id="addax-lightbox" >'+
                     '<a href="#" class="close-lightbox">'+
@@ -449,7 +454,7 @@ jQuery(document).ready(function(){
                     '</a>'+
                   '</div>';
 
-                    
+
                 //insert lightbox HTML into page
                 jQuery('body').append(lightbox);
             }
@@ -459,7 +464,7 @@ jQuery(document).ready(function(){
 
 
     //Click anywhere on the page to get rid of lightbox window
-    jQuery('.close-lightbox').on('click', function(e) { 
+    jQuery('.close-lightbox').on('click', function(e) {
         e.preventDefault();
         jQuery('#addax-lightbox').hide();
     });
@@ -468,7 +473,7 @@ jQuery(document).ready(function(){
 
     /*addax progress bar*/
 
-        
+
     if (jQuery('.ap-bar').exists()) {
 
 
@@ -476,7 +481,7 @@ jQuery(document).ready(function(){
 
 
             jQuery('.ap-bar').each(function(){
-          
+
                 jQuery(this).find('.ap-progress').animate({
                     width:jQuery(this).attr('data-percent')
                 },2000);
@@ -488,7 +493,7 @@ jQuery(document).ready(function(){
 
         },{offset : '80%'});
     }
-       
+
     /*drop down*/
     jQuery(function () {
 
@@ -506,7 +511,7 @@ jQuery(document).ready(function(){
                 if (!isEntirelyVisible) {
                     jQuery(this).addClass('edge');
                 } else {
-                   
+
                 }
             }
         });
@@ -524,5 +529,84 @@ jQuery(document).ready(function(){
         var mixer = mixitup('.addax-filter-gallery');
     }
 
+    if (jQuery('#macy-container').exists()) {
 
-})
+      var masonry = new Macy({
+              container: '#macy-container',
+              trueOrder: false,
+              debug: true,
+              margin: {
+                  x: 20,
+                  y: 20
+              },
+              columns: 2,
+              breakAt: {
+                1200: {
+                  columns: 2,
+                  margin: {
+                      x: 23,
+                      y: 4
+                  }
+                },
+                940: {
+                  margin: {
+                      y: 23
+                  }
+                },
+                520: {
+                  columns: 1,
+                  margin: {
+                      x: 20,
+                      y: 20
+                  },
+                },
+                400: {
+                  columns: 1,
+                  margin: {
+                      x: 20,
+                      y: 20
+                  },
+                }
+              }
+            });
+
+            postShareButtonClick = jQuery(function (){
+                var buttonWrapper = jQuery(".addax-share-button"),
+                    button = jQuery(".addax-share-button > a"),
+                    icons = jQuery(".addax-share-button > .icon-wrapper"),
+                    close = jQuery(".close-social-icons");
+
+                function init(){
+                    button.on("click", toggle);
+                    close.on("click", closeIcons);
+                }
+
+                function toggle(e){
+                    if (buttonWrapper.hasClass("active")){
+                        closeIcons();
+                    } else{
+                        openIcons();
+                    }
+                    e.preventDefault();
+                }
+
+                function openIcons(){
+                    buttonWrapper.addClass("active");
+                    button.addClass("hidden");
+                    buttonWrapper.animate({width: "210"}, 500);
+                    icons.animate({left: "0"}, 500);
+                }
+
+                function closeIcons(e){
+                  e.preventDefault();
+                    buttonWrapper.removeClass("active");
+            		    button.removeClass("hidden");
+                    icons.animate({left: "-210"}, 500);
+                    buttonWrapper.animate({width: "178"}, 500);
+                }
+
+                init();
+            });
+
+    }
+});

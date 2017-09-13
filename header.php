@@ -18,6 +18,12 @@
   <?php wp_head(); ?>
   </head>
   <body <?php body_class(); ?>>
+    <!-- <div id="addax-loader">
+      <div class="leftEye"></div>
+      <div class="rightEye"></div>
+      <div class="mouth"></div>
+    </div>
+    <!-- loader ends -->
   <?php
   global $post;
   addax_header();

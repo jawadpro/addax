@@ -14,6 +14,15 @@
  $addax_topbar_email = ( isset( $addax_theme_options['topbar-email'] ) && !empty( $addax_theme_options['topbar-email'] ) ) ? $addax_theme_options['topbar-email'] : '';
  $addax_topbar_social = ( isset( $addax_theme_options['topbar-social'] ) ) ? $addax_theme_options['topbar-social'] : '';
  $addax_search = ( isset( $addax_theme_options['header-search'] ) ) ? $addax_theme_options['header-search'] : '';
+ $addax_widget_one_icon = ( isset( $addax_theme_options['widget-one-icon'] ) ) ? esc_attr__( $addax_theme_options['widget-one-icon'] , 'addax' ) : '';
+ $addax_widget_one_title = ( isset( $addax_theme_options['widget-one-title'] ) ) ? esc_attr__( $addax_theme_options['widget-one-title'] , 'addax' ) : '';
+ $addax_widget_one_sub_title = ( isset( $addax_theme_options['widget-one-subtitle'] ) ) ? esc_attr__( $addax_theme_options['widget-one-subtitle'] , 'addax' ) : '';
+ $addax_widget_two_icon = ( isset( $addax_theme_options['widget-two-icon'] ) ) ? esc_attr__( $addax_theme_options['widget-two-icon'] , 'addax' ) : '';
+ $addax_widget_two_title = ( isset( $addax_theme_options['widget-two-title'] ) ) ? esc_attr__( $addax_theme_options['widget-two-title'] , 'addax' ) : '';
+ $addax_widget_two_sub_title = ( isset( $addax_theme_options['widget-two-subtitle'] ) ) ? esc_attr__( $addax_theme_options['widget-two-subtitle'] , 'addax' ) : '';
+ $addax_widget_three_icon = ( isset( $addax_theme_options['widget-three-icon'] ) ) ? esc_attr__( $addax_theme_options['widget-three-icon'] , 'addax' ) : '';
+ $addax_widget_three_title = ( isset( $addax_theme_options['widget-three-title'] ) ) ? esc_attr__( $addax_theme_options['widget-three-title'] , 'addax' ) : '';
+ $addax_widget_three_sub_title = ( isset( $addax_theme_options['widget-three-subtitle'] ) ) ? esc_attr__( $addax_theme_options['widget-three-subtitle'] , 'addax' ) : '';
 ?>
 
  <!-- header starts here // style 1 // style 2 -->
@@ -41,15 +50,11 @@
 
       <div class="tb-right">
 
-          <?php if(  $addax_topbar_social == true ) : ?>
-         <div class="social-icons">
-           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google"><i class="fa fa-google"></i></a>
-           <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-           <a href="#" data-toggle="tooltip" data-placement="bottom" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-         </div>
-       <?php endif; ?>
+          <?php
+            if(  $addax_topbar_social == true ) :
+            addax_social_icons();
+            endif;
+           ?>
 
       </div>
 
@@ -73,6 +78,48 @@
            <img src="<?php echo $addax_logo; ?>" class="main-logo">
            <img src="<?php echo $addax_sticky_logo; ?>" class="sticky-logo">
          </a>
+
+         <?php if( $header_layout == 'style3' ) :  ?>
+         <!--header info box-->
+         <div class="header-infoBox">
+           <ul>
+
+             <?php if( !empty( $addax_widget_one_title ) ) : ?>
+             <li>
+               <div class="hi-icon"><i class="<?php echo $addax_widget_one_icon; ?>" aria-hidden="true"></i></div>
+               <div class="hi-text">
+                 <h4><?php echo $addax_widget_one_title; ?></h4>
+                 <p><?php echo $addax_widget_one_sub_title; ?></p>
+               </div>
+             </li>
+             <?php endif; ?>
+
+             <?php if( !empty( $addax_widget_two_title ) ) : ?>
+             <li>
+               <div class="hi-icon"><i class="<?php echo $addax_widget_two_icon; ?>" aria-hidden="true"></i></div>
+               <div class="hi-text">
+                 <h4><?php echo $addax_widget_two_title; ?></h4>
+                 <p><?php echo $addax_widget_two_sub_title; ?></p>
+               </div>
+             </li>
+             <?php endif; ?>
+
+             <?php if( !empty( $addax_widget_three_title ) ) : ?>
+             <li>
+               <div class="hi-icon"><i class="<?php echo $addax_widget_three_icon; ?>" aria-hidden="true"></i></div>
+               <div class="hi-text">
+                 <h4><?php echo $addax_widget_three_title; ?></h4>
+                 <p><?php echo $addax_widget_three_sub_title; ?></p>
+               </div>
+             </li>
+            <?php endif; ?>
+
+           </ul>
+         </div>
+         <!--end of header info box-->
+
+       <?php endif; ?>
+
        </div>
        <div class="navbar-collapse collapse">
 

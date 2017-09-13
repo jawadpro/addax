@@ -47,12 +47,7 @@ $copyright = ( isset( $addax_theme_options['footer-copyright-text'] ) ) ? $addax
 
                 <div class="addax-footer-social style1">
 
-                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                      <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                      <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                      <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                    <?php addax_social_icons(); ?>
 
                   </div>
 

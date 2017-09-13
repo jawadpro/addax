@@ -39,6 +39,11 @@
     echo '#addax-header .navbar-nav > li > a{ color:'. $header_menu_color .' !important; }';
   }
 
+  if( $addax_theme_options['transparent-header-checkbox'] == true )
+  {
+      echo '#addax-header{ color:#fff; }';
+  }
+
   // Footer Styling
 
   if(isset( $addax_theme_options['footer-background'] ))

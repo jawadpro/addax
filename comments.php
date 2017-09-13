@@ -5,7 +5,7 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area container addax-comment-container">
+<div id="comments" class="comments-area addax-comment-container">
 
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
@@ -27,9 +27,9 @@ if ( post_password_required() ) {
 
 			<?php
 			wp_list_comments( array(
-'style'             => 'ul',
-'callback' => 'better_comments'
-) );
+				'style' => 'ul',
+				'callback' => 'better_comments'
+				) );
 			?>
 
 
@@ -46,7 +46,7 @@ if ( post_password_required() ) {
 
 	<div class="comment-form">
 			<?php if(comments_open()){ ?>
-			<h5><?php echo esc_html__( "ADD your COMMENT", "addax" ); ?></h5>
+			<h2><?php echo esc_html__( "Start Discussion?", "addax" ); ?></h2>
 			<?php
 			}
 			$commenter = wp_get_current_commenter();

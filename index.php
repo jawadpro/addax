@@ -14,8 +14,7 @@
 
         <div class="col-md-8">
 
-          <div id="<?php echo $blog_style; ?>">
-
+          <div id="macy-container">
 
           <?php
 
@@ -31,9 +30,15 @@
 
           ?>
 
-        </div>
+          </div>
 
-      </div>
+          <div class="clearfix"></div>
+
+          <div class="addax-paginaton">
+            <?php  addax_pagination_links(); ?>
+          </div>
+
+        </div>
 
 
     <?php get_sidebar(); ?>
