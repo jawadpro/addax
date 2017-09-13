@@ -6,7 +6,7 @@
 ?>
 
 
-  <div id="addax-section">
+  <div id="addax-section" class="main-section">
 
     <div class="container">
 

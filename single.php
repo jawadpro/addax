@@ -20,10 +20,10 @@
           <?php endif; ?>
 
           <h2> <?php the_title(); ?></h2>
-          <div class="addax-single-post-meta">
-             <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><i class="fa fa-user" aria-hidden="true"></i> <?php echo get_the_author(); ?></a> |
-            &nbsp;<?php echo '<a href="' . get_category_link( $post_category[0]->term_id ) . '"><i class="fa fa-tags" aria-hidden="true"></i> ' . $post_category[0]->cat_name . '</a>'; ?> |
-            &nbsp;<a href="<?php echo comments_link(); ?>"><i class="fa fa-comments" aria-hidden="true"></i> <?php echo comments_number(); ?></a>
+          <div class="addax-single-post-meta addax-single-meta">
+             <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><i class="fa fa-user" aria-hidden="true"></i> <?php echo get_the_author(); ?></a> 
+            <?php echo '<a href="' . get_category_link( $post_category[0]->term_id ) . '"><i class="fa fa-tags" aria-hidden="true"></i> ' . $post_category[0]->cat_name . '</a>'; ?> 
+            <a href="<?php echo comments_link(); ?>"><i class="fa fa-comments" aria-hidden="true"></i> <?php echo comments_number(); ?></a>
           </div>
           <br>
           <?php the_content(); ?>

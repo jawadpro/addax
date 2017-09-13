@@ -1982,7 +1982,7 @@ input[type="submit"]:focus,button{
 #addax-footer .widget-heading{
   color:#fff;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 2px;
   margin-bottom: 30px;
   position: relative;
@@ -2646,33 +2646,55 @@ input[type="submit"]:focus,button{
   border:none;
 }
 .addax-sidebar.style2 .searchform input{
-  padding:10px 15px;
-  border:1px solid rgba(0,0,0,.1);
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: 0px;
 }
 .addax-sidebar.style2 .searchform button{
-  background:#0076ff;
+  background:#487fff;
   height: 41px;
   color:#fff;
+  border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .addax-sidebar.style2 .widget-title{
-  position:relative;
-  padding:5px 15px;
-  color:#fff;
-  background:#0076ff;
+  position: relative;
+  padding: 5px 15px;
+  color: #ffffff;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  text-align: center;
+  background: #487fff;
+
 }
 .addax-sidebar.style2 ul{
   width:100%;
   padding:0px;
   margin:0;
   list-style: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   border:1px solid rgba(0,0,0,.1);
   margin-bottom:10px;
+  background:rgba(255,255,255,.8);
 }
 .addax-sidebar.style2 .textwidget{
   padding:15px;
   border:1px solid rgba(0,0,0,.1);
   margin-bottom:10px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background:rgba(255,255,255,.8);
+}
+.widget-title h4{
+  text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 800;
 }
 
 .addax-sidebar .addax-widget ul li{
@@ -3134,19 +3156,28 @@ input[type="submit"]:focus,button{
 .addax-single-post-cat
 {
   display: block;
-  position:absolute;
-  top:5px;
-  left:5px;
-  background-color:#0076FF;
+  position: absolute;
+  top: 10px;
+  border-radius: 50px;
+  left: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  font-size: 12px;
+  background:#0076FF;
   text-align: center;
-  color:#fff;
-  padding:5px;
+  color: #fff;
+  padding: 8px 20px;
   z-index: 5;
+  transition:.2s ease-in all;
+  -moz-transition:.2s ease-in all;
+  -o-transition:.2s ease-in all;
 }
 
 .addax-single-post-cat:hover
 {
   color: #fff;
+  background:#0076FF;
+  padding-left:30px;
 }
 
 .addax-post-day
@@ -3161,16 +3192,29 @@ input[type="submit"]:focus,button{
   max-height: 500px;
   overflow: hidden;
   border:1px solid rgba(0,0,0,.1);
-  padding: 10px;
+  padding: 15px;
+  background:#fff;
   margin-top: 10px;
   margin-bottom: 20px;
+  border-radius: 9px;
+  transition:.3s ease-in all;
+  -moz-transition:.3s ease-in all;
+  -o-transition:.3s ease-in all;
+  box-shadow: 0px 0px 0px rgba(0,0,0,0);
+}
+.addax-single-meta{
+  padding:10px 0;
+  border:1px solid #ddd;
+  margin-top:10px;
+}
+.addax-single-meta a:nth-child(2) {
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+}
+.addax-single-post-box:hover{
+  box-shadow: 0px 0px 22px rgba(0,0,0,.1);
 }
 
-.addax-single-post-box:hover
-{
-   -webkit-transition: .3s ease-in-out;
-  box-shadow: 0px 2px 2px rgba(0,0,0,0);
-}
 
 .addax-post-image
 {
@@ -3190,11 +3234,30 @@ input[type="submit"]:focus,button{
 {
   border-bottom: 1px solid rgba(0,0,0,.1);
   padding-bottom: 10px;
+  color:#333;
+}
+.addax-single-post-meta{
+  display:flex;
 }
 
-.addax-single-post-meta , .addax-single-post-meta a
-{
-  color:#999;
+.addax-single-post-meta a {
+    display: flex;
+  font-size: 12px;
+  justify-content: center;
+  text-align: center;
+  flex-grow: 1;
+  color:rgba(0,0,0,.4);
+  transition:.2s ease-in all;
+  -moz-transition:.2s ease-in all;
+  -o-transition:.2s ease-in all;
+}
+.addax-single-post-meta a:hover{
+  color:rgba(0,0,0,.6);
+}
+
+.addax-single-post-meta a i{
+      margin-right: 9px;
+    font-size: 14px;  
 }
 
 /*BREADCRUMBS*/
@@ -3394,10 +3457,6 @@ li.addax-comment-list
   padding: 10px;
   border-bottom: 1px solid #ccc;
   overflow: hidden;
-}
-
-ul.children {
-    border-left: 1px solid #ccc;
 }
 
 .reply.comment-reply-link
