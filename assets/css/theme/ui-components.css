@@ -418,12 +418,7 @@
     margin-right:10px;
     margin-top:10px;
 }
-#addax-hero .ah-content .ah-holder h1 {
-  font-family: 'Roboto Slab', serif;
-  font-weight: 400;
-  font-size: 4em;
-  color: #333;
-}
+
 .ah-holder h1 span{
     color:#0076ff;
 }
@@ -3257,7 +3252,7 @@ input[type="submit"]:focus,button{
 
 .addax-single-post-meta a i{
       margin-right: 9px;
-    font-size: 14px;  
+    font-size: 14px;
 }
 
 /*BREADCRUMBS*/
