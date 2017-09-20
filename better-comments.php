@@ -43,7 +43,7 @@ function better_comments( $comment, $args, $depth ) {
 			</div><!-- .comment-details -->
 			<div class="reply comment-reply-link">
 				<?php comment_reply_link( array_merge( $args, array(
-					'reply_text' => esc_html__( 'Reply', 'addax' ),
+					'reply_text' => esc_html__( '', 'addax' ),
 					'depth'      => $depth,
 					'max_depth'	 => $args['max_depth'] )
 				) ); ?>
