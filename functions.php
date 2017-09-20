@@ -82,6 +82,7 @@
     add_image_size( 'addax-info-box-img', 180, 180 );
     add_image_size( 'addax-testimonial-img', 60, 60 );
     add_image_size( 'addax-post-thumbnail', 345, 250 );
+    add_image_size( 'addax-tab-image', 550, 400 );
 
 
 
