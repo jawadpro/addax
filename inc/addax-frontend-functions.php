@@ -43,10 +43,30 @@
   if ( ! function_exists( 'addax_page_slider' ) ) {
       function addax_page_slider() {
             global $post;
-            $slider_page_meta = esc_attr( get_post_meta( $post->ID , 'page_header_shortcode' ,true ) );
-            if( !empty( $slider_page_meta ) )
+            $slider = get_post_meta( $post->ID , 'page_header_shortcode' ,true );
+            $hide_nav = get_post_meta( $post->ID , 'hide_slider_navigation' ,true );
+            $hide_down_arrow = get_post_meta( $post->ID , 'hide_slider_scroll_arrow' ,true );
+
+            if( $hide_nav == true )
             {
-              echo do_shortcode($slider_page_meta);
+              $hide_nav = true;
+            }
+            else {
+              $hide_nav = false;
+            }
+
+            if( $hide_down_arrow == true )
+            {
+              $hide_down_arrow = true;
+            }
+            else {
+              $hide_down_arrow = false;
+            }
+
+            if( !empty( $slider ) )
+            {
+              $shortcode = '[addax_slider slider='.$slider.' hide_nav='.$hide_nav.' hide_scroll_arrow='.$hide_down_arrow.']';
+              echo do_shortcode($shortcode);
             }
       }
   }
@@ -418,5 +438,77 @@
       }
 
   }
+
+
+  /* ================ ADDAX EXCERPT SETTING ============== */
+
+  function addax_excerpt_length( $length ) {
+      return 20;
+  }
+  add_filter( 'excerpt_length', 'addax_excerpt_length', 999 );
+
+  function addax_excerpt_more( $more ) {
+    return '.....';
+  }
+  add_filter('excerpt_more', 'addax_excerpt_more');
+
+
+  /* ================ ADDAX ARCHIVE TITLE ============== */
+
+  add_filter( 'get_the_archive_title', function ($title) {
+
+  if ( is_category() ) {
+
+          $title = single_cat_title( '', false );
+
+      } elseif ( is_tag() ) {
+
+          $title = single_tag_title( '', false );
+
+      } elseif ( is_author() ) {
+
+          $title = get_the_author();
+
+      }
+
+      elseif ( is_date() ) {
+
+          $title = get_the_date();
+
+      }
+
+  return $title;
+
+});
+
+/* ================ ADDAX CUSTOM TAXONOMY TERMS ============== */
+
+  function addax_get_custom_terms($tax) {
+  global $wpdb;
+
+  $out = array();
+
+  $a = $wpdb->get_results($wpdb->prepare("SELECT t.name,t.slug,
+    t.term_group,x.term_taxonomy_id,x.term_id,x.taxonomy,x.description,x.parent,x.count
+    FROM {$wpdb->prefix}term_taxonomy x LEFT JOIN {$wpdb->prefix}terms t ON (t.term_id = x.term_id)
+    WHERE x.taxonomy=%s;",$tax));
+
+  foreach ($a as $b) {
+   $obj = new stdClass();
+   $obj->term_id = $b->term_id;
+   $obj->name = $b->name;
+   $obj->slug = $b->slug;
+   $obj->term_group = $b->term_group;
+   $obj->term_taxonomy_id = $b->term_taxonomy_id;
+   $obj->taxonomy = $b->taxonomy;
+   $obj->description = $b->description;
+   $obj->parent = $b->parent;
+   $obj->count = $b->count;
+   $out[] = $obj;
+  }
+
+return $out;
+}
+
 
 ?>

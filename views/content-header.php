@@ -155,5 +155,3 @@
 
  </header>
  <!-- header ends here -->
-
- <?php echo do_shortcode(''); ?>

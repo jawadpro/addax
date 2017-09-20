@@ -42,6 +42,7 @@
   if( $addax_theme_options['transparent-header-checkbox'] == true )
   {
       echo '#addax-header{ color:#fff; }';
+      echo '#addax-header.style3 .navbar-collapse{border-top:1px solid rgba(255,255,255,.1) !important; }';
   }
 
   // Footer Styling
@@ -62,6 +63,11 @@
   {
     $footer_links_color = $addax_theme_options['footer-links-color'];
     echo '#addax-footer a{ color:'. $footer_links_color .' !important; }';
+  }
+
+  if(isset( $addax_theme_options['menu-typography'] ))
+  {
+    echo $addax_theme_options['menu-typography'];
   }
 
   echo '</style>';

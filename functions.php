@@ -21,6 +21,8 @@
   add_action( 'wp_enqueue_scripts' , 'addax_style_scripts_enqueue' );
   function addax_style_scripts_enqueue()
   {
+    global $addax_theme_options;
+    $gmap_key = $addax_theme_options['gmap-api'];
     // Addax stylsheets
     wp_enqueue_style( 'style-css' , ADDAX_TEMPLATE_URI . '/style.css' );
     wp_enqueue_style( 'addax-style-css' , ADDAX_TEMPLATE_URI . '/assets/css/style.css' );
@@ -38,13 +40,16 @@
     wp_enqueue_script( 'addax-owl-carousel-js' , ADDAX_TEMPLATE_URI . '/assets/js/owl.carousel.min.js', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-wow-min-js' , ADDAX_TEMPLATE_URI . '/assets/js/wow.min.js', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-jquery-waypoints-js' , ADDAX_TEMPLATE_URI . '/assets/js/jquery.waypoints.min.js', array( 'jquery' ), '' , true  );
-    //wp_enqueue_script( 'addax-map-js' , ADDAX_TEMPLATE_URI . '/assets/js/map.js', array( 'jquery' ), '' , true  );
-    //wp_enqueue_script( 'addax-map-api-js' , 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB_FOwS1sfvZkhjueoLFRY0s-j_k1CbKn8', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-smart-menus-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.min.js' , array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-smart-menus-bts-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.bootstrap.js' , array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-mixit-up-js' , ADDAX_TEMPLATE_URI . '/assets/js/mixitup.min.js' , array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-macy-js' , ADDAX_TEMPLATE_URI . '/assets/js/macy.js', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-custom-js' , ADDAX_TEMPLATE_URI . '/assets/js/custom.js', array( 'jquery' ), '' , true  );
+
+    //if( !empty( $gmap_key ) ) :
+    wp_enqueue_script( 'addax-map-js' , ADDAX_TEMPLATE_URI . '/assets/js/map.js', array( 'jquery' ), '' , true  );
+    wp_enqueue_script( 'addax-map-api-js' , 'https://maps.googleapis.com/maps/api/js?key='.$gmap_key , array( 'jquery' ), '' , true  );
+    //endif;
 
     if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') ) {
       wp_enqueue_script( 'comment-reply' );
@@ -77,44 +82,16 @@
     add_image_size( 'addax-info-box-img', 180, 180 );
     add_image_size( 'addax-testimonial-img', 60, 60 );
     add_image_size( 'addax-post-thumbnail', 345, 250 );
-
-    /* ================ ADDAX EXCERPT SETTING ============== */
-
-    function addax_excerpt_length( $length ) {
-        return 20;
-    }
-    add_filter( 'excerpt_length', 'addax_excerpt_length', 999 );
-
-    function addax_excerpt_more( $more ) {
-    	return '.....';
-    }
-    add_filter('excerpt_more', 'addax_excerpt_more');
+    add_image_size( 'addax-tab-image', 550, 400 );
 
 
-    /* ================ ADDAX ARCHIVE TITLE ============== */
 
-    add_filter( 'get_the_archive_title', function ($title) {
-
-    if ( is_category() ) {
-
-            $title = single_cat_title( '', false );
-
-        } elseif ( is_tag() ) {
-
-            $title = single_tag_title( '', false );
-
-        } elseif ( is_author() ) {
-
-            $title = get_the_author();
-
-        }
-
-        elseif ( is_date() ) {
-
-            $title = get_the_date();
-
-        }
-
-    return $title;
-
-});
+add_action('wp_head' , 'asda');
+function asda()
+{
+  ?>
+  <script type="text/javascript">
+  var marker_url = "<?php echo get_template_directory_uri(). '/assets/img/cd-icon-location.svg'; ?>";
+  </script>
+  <?php
+}

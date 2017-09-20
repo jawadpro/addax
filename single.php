@@ -11,6 +11,9 @@
           if( have_posts() ) : while( have_posts() ) : the_post();
           $post_thumbnail = get_the_post_thumbnail_url();
            $post_category = get_the_category();
+           $term_id = ( !empty( $post_category ) ) ?  $post_category[0]->term_id : '' ;
+           $cat_name = ( !empty( $post_category ) ) ?  $post_category[0]->cat_name : '' ;
+           $cat_link = ( !empty( $term_id ) ) ?  get_category_link($term_id) : '' ;
         ?>
 
           <?php if( !empty( $post_thumbnail ) ) : ?>
@@ -21,8 +24,8 @@
 
           <h2> <?php the_title(); ?></h2>
           <div class="addax-single-post-meta addax-single-meta">
-             <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><i class="fa fa-user" aria-hidden="true"></i> <?php echo get_the_author(); ?></a> 
-            <?php echo '<a href="' . get_category_link( $post_category[0]->term_id ) . '"><i class="fa fa-tags" aria-hidden="true"></i> ' . $post_category[0]->cat_name . '</a>'; ?> 
+             <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><i class="fa fa-user" aria-hidden="true"></i> <?php echo get_the_author(); ?></a>
+            <?php echo '<a href="' . $cat_link . '"><i class="fa fa-tags" aria-hidden="true"></i> ' . $cat_name . '</a>'; ?>
             <a href="<?php echo comments_link(); ?>"><i class="fa fa-comments" aria-hidden="true"></i> <?php echo comments_number(); ?></a>
           </div>
           <br>

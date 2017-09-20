@@ -154,6 +154,18 @@ $meta_boxes[] = array(
 );
 
 // PAGE METABOXES
+$adx_sliders = array( '' => '' );
+$terms = addax_get_custom_terms('adx_slider_category');
+if( !empty($terms) ):
+	foreach( $terms as $term )
+	{
+		if( $term->slug !== NULL ) :
+			$adx_sliders[$term->slug] = $term->slug;
+			endif;
+	}
+endif;
+
+
 	$meta_boxes[] = array(
 				'title'      => __( 'Page Options', 'addax' ),
 				'post_types' => array('page'),
@@ -166,10 +178,32 @@ $meta_boxes[] = array(
 
 									array(
 											'id' 	=> 'page_header_shortcode',
-											'name'	=> __( 'Slider Shortcode' , 'addax' ),
-											'type'	=> 'text',
-											'desc' => __('You can user Addax Slider, Revolution Slider or Layer Slider etc shortcode here.' , 'addax'),
+											'name'	=> __( 'Select Addax Slider' , 'addax' ),
+											'type'	=> 'select',
+											'desc' => __('Select slider from here.' , 'addax'),
+											'options' => $adx_sliders
+										),
+
+									array(
+											'id' 	=> 'hide_slider_navigation',
+											'name'	=> __( 'Hide Slider Navigation Arrows' , 'addax' ),
+											'type'	=> 'checkbox',
+											'visible' => ['page_header_shortcode', '!=' , '']
 									),
+
+									array(
+											'id' 	=> 'hide_slider_scroll_arrow',
+											'name'	=> __( 'Hide Slider Scroll down Arrow' , 'addax' ),
+											'type'	=> 'checkbox',
+											'visible' => ['page_header_shortcode', '!=' , '']
+									),
+
+									// array(
+									// 		'id' 	=> 'page_header_shortcode',
+									// 		'name'	=> __( 'Slider Shortcode' , 'addax' ),
+									// 		'type'	=> 'text',
+									// 		'desc' => __('You can user Addax Slider, Revolution Slider or Layer Slider etc shortcode here.' , 'addax'),
+									// ),
 
 									array(
 											'type'	=> 'heading',
@@ -261,6 +295,33 @@ $meta_boxes[] = array(
 										),
 
 	)
+);
+
+// TEAM POST TYPE METABOX
+
+$meta_boxes[] = array(
+			'title'      => __( 'Team Member Info', 'addax' ),
+			'post_types' => array('adx-team'),
+			'fields'     => array(
+
+
+								array(
+										'id' 	=> 'team_member_positon',
+										'name'	=> __( 'Team Member Position' , 'addax' ),
+										'type'	=> 'text',
+										'desc' => __('Enter team member position in company.' , 'addax'),
+								),
+
+								array(
+										'id' 	=> 'team_member_image',
+										'name'	=> __( 'Team Member Image' , 'addax' ),
+										'type'	=> 'image_advanced',
+										'max_file_uploads' => 1,
+										'max_status' => false,
+										'desc' => __('Upload/Select image.' , 'addax'),
+									),
+
+)
 );
 
 
