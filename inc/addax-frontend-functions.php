@@ -65,7 +65,8 @@
 
             if( !empty( $slider ) )
             {
-              $shortcode = '[addax_slider slider='.$slider.' hide_nav='.$hide_nav.' hide_scroll_arrow='.$hide_down_arrow.']';
+              $shortcode = '[addax_slider slider="'.$slider.'" hide_nav="'.$hide_nav.'" hide_scroll_arrow="'.$hide_down_arrow.'"]';
+              $shortcode;
               echo do_shortcode($shortcode);
             }
       }

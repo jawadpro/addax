@@ -95,3 +95,32 @@ function asda()
   </script>
   <?php
 }
+
+
+// After VC Init
+add_action( 'vc_after_init', 'vc_after_init_actions' );
+
+function vc_after_init_actions() {
+
+vc_remove_element( 'vc_gallery' );
+$settings = array (
+  'name' => __( 'Addax Button', 'addax' ),
+  'category' => __( 'Addax', 'addax' )
+);
+vc_map_update( 'vc_btn', $settings );
+
+$settings = array (
+  'name' => __( 'Addax New Accordion', 'addax' ),
+  'category' => __( 'Addax', 'addax' )
+);
+vc_map_update( 'vc_tta_accordion', $settings );
+
+$settings = array (
+  'name' => __( 'Addax Tabs', 'addax' ),
+  'category' => __( 'Addax', 'addax' )
+);
+vc_map_update( 'vc_tta_tabs', $settings );
+
+
+
+}
