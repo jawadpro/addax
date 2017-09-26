@@ -85,10 +85,9 @@
             'container' => '',
             'fallback_cb' => true,
             'items_wrap' => '%3$s',
-            'walker' => new Addax_walker_nav_menu(),
+          // 'walker' => new Addax_walker_nav_menu(),
           );
           wp_nav_menu( $addax_header_one );
-
       }
   }
 

@@ -276,6 +276,7 @@
 #addax-hero-container .addax-hero-controller{
     position:absolute;
     width:100%;
+    display:none;
     top:50%;
 }
 #addax-hero-container:hover .addax-hero-controller button{
@@ -552,6 +553,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de000000', e
 #addax-hero-container .scrollDown{
     position: absolute;
     bottom: -7px;
+    margin-bottom:1px;
     width:208px;
     height:50px;
     left: 50%;
@@ -2135,8 +2137,9 @@ input[type="submit"]:focus,button{
 .addax-counter-box.style1{
   text-align: center;
 }
-.addax-counter-box.style1 h3{
-  font-size:4em;
+.addax-counter-box.style1 h3,.addax-counter-box.style1 h3 span{
+  font-size:50px;
+  font-weight:800;
 }
 .addax-counter-box.style1 h4{
   font-weight:400;
@@ -3499,3 +3502,4 @@ li.addax-comment-list
 a#cancel-comment-reply-link {
     float: right;
 }
+

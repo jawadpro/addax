@@ -43,7 +43,13 @@
   {
       echo '#addax-header{ color:#fff; }';
       echo '#addax-header.style3 .navbar-collapse{border-top:1px solid rgba(255,255,255,.1) !important; }';
+      echo '#addax-page-title { padding: 137px 0 50px 0 !important;}';
+      echo 'body.logged-in.admin-bar header#addax-header{ padding-top:32px !important; }';
   }
+
+
+
+
 
   // Footer Styling
 

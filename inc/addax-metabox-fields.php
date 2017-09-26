@@ -15,6 +15,13 @@ function addax_meta_boxes( $meta_boxes ) {
         'fields'     => array(
 
 									array(
+											'id' 	=> 'slide_heading',
+											'name'	=> __('Slide Heading' , 'addax'),
+											'type'	=> 'textarea',
+											'desc' => __('Enter Heading text here. Leave empty if you don\'t want to show on slide.' , 'addax'),
+									),
+
+									array(
 											'id' 	=> 'slide_sub_heading',
 											'name'	=> __('Slide Sub-Heading' , 'addax'),
 											'type'	=> 'text',
@@ -116,6 +123,39 @@ function addax_meta_boxes( $meta_boxes ) {
 												'type'	=> 'color',
 												'desc' => __('Select color for sub heading.' , 'addax'),
 										),
+
+										array(
+												'id' 	=> 'slider_button_color_type',
+												'name'	=> __( 'Slide Button Color type' , 'addax' ),
+												'type'	=> 'select',
+												'desc' => __('Choose button background color type.' , 'addax'),
+												'options' => array(
+													'solid' 	=>  __('Solid' , 'addax') ,
+													'gradient'		=> __('Gradient' , 'addax'),
+												),
+											),
+
+										array(
+												'id' 	=> 'button_solid_color',
+												'name'	=> __( 'Button Background Color' , 'addax' ),
+												'type'	=> 'color',
+												'visible' => ['slider_button_color_type', '=' , 'solid'],
+										),
+
+										array(
+												'id' 	=> 'button_gradient_color_to',
+												'name'	=> __( 'To' , 'addax' ),
+												'type'	=> 'color',
+												'visible' => ['slider_button_color_type', '=' , 'gradient'],
+										),
+
+										array(
+												'id' 	=> 'button_gradient_color_from',
+												'name'	=> __( 'From' , 'addax' ),
+												'type'	=> 'color',
+												'visible' => ['slider_button_color_type', '=' , 'gradient'],
+										),
+
 		)
 	);
 
@@ -124,8 +164,6 @@ $meta_boxes[] = array(
 			'title'      => __( 'Testimonial Options', 'addax' ),
 			'post_types' => array('adx-testimonial'),
 			'fields'     => array(
-
-
 								array(
 										'id' 	=> 'client_desgi',
 										'name'	=> __( 'Designation' , 'addax' ),
