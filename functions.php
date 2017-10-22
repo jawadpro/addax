@@ -47,8 +47,8 @@
     wp_enqueue_script( 'addax-custom-js' , ADDAX_TEMPLATE_URI . '/assets/js/custom.js', array( 'jquery' ), '' , true  );
 
     //if( !empty( $gmap_key ) ) :
-    wp_enqueue_script( 'addax-map-js' , ADDAX_TEMPLATE_URI . '/assets/js/map.js', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-map-api-js' , 'https://maps.googleapis.com/maps/api/js?key='.$gmap_key , array( 'jquery' ), '' , true  );
+    wp_enqueue_script( 'addax-map-js' , ADDAX_TEMPLATE_URI . '/assets/js/map.js', array( 'jquery' ), '' , true  );
     //endif;
 
     if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') ) {
@@ -66,10 +66,16 @@
   }
 
     /* ================ ADDAX THEME SUPPORTS ============== */
+    add_action( 'after_setup_theme', 'addax_theme_setup' );
+    function addax_theme_setup()
+    {
+      add_theme_support( 'menu' );
+      add_theme_support( 'widgets' );
+      add_theme_support( 'post-thumbnails' );
+      add_theme_support( 'automatic-feed-links' );
+      add_theme_support( 'title-tag' );
+    }
 
-    add_theme_support( 'menu' );
-    add_theme_support( 'widgets' );
-    add_theme_support( 'post-thumbnails' );
 
     /* ================ ADDAX MENU LOCATIONS ============== */
 
@@ -84,43 +90,18 @@
     add_image_size( 'addax-post-thumbnail', 345, 250 );
     add_image_size( 'addax-tab-image', 550, 400 );
 
+    /* ================ ADDAX CONTENT WIDTH ============== */
+
+    if ( ! isset( $content_width ) ) $content_width = 900;
 
 
-add_action('wp_head' , 'asda');
-function asda()
+
+add_action('wp_head' , 'addax_google_map_marker' );
+function addax_google_map_marker()
 {
   ?>
   <script type="text/javascript">
   var marker_url = "<?php echo get_template_directory_uri(). '/assets/img/cd-icon-location.svg'; ?>";
   </script>
   <?php
-}
-
-
-// After VC Init
-add_action( 'vc_after_init', 'vc_after_init_actions' );
-
-function vc_after_init_actions() {
-
-vc_remove_element( 'vc_gallery' );
-$settings = array (
-  'name' => __( 'Addax Button', 'addax' ),
-  'category' => __( 'Addax', 'addax' )
-);
-vc_map_update( 'vc_btn', $settings );
-
-$settings = array (
-  'name' => __( 'Addax New Accordion', 'addax' ),
-  'category' => __( 'Addax', 'addax' )
-);
-vc_map_update( 'vc_tta_accordion', $settings );
-
-$settings = array (
-  'name' => __( 'Addax Tabs', 'addax' ),
-  'category' => __( 'Addax', 'addax' )
-);
-vc_map_update( 'vc_tta_tabs', $settings );
-
-
-
 }

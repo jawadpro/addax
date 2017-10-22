@@ -140,15 +140,14 @@
 
    <div class="addax-search">
        <div class="container">
-
-         <input type="text" placeholder="Type here to search">
+         <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+         <input type="text" value="<?php get_search_query(); ?>" name="s" placeholder="Type here to search">
 
          <div class="s-icons">
-           <a href="#" class="s-search"><i class="fa fa-search" aria-hidden="true"></i></a>
+           <button class="s-search"><i class="fa fa-search" aria-hidden="true"></i></button>
            <a href="#" class="s-toggle"><i class="fa fa-times" aria-hidden="true"></i></a>
-
          </div>
-
+         </form>
        </div>
    </div>
 

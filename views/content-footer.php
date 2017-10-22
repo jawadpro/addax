@@ -67,7 +67,7 @@ $copyright = ( isset( $addax_theme_options['footer-copyright-text'] ) ) ? $addax
             <div class="col-sm-12">
 
                 <div class="footer-credits">
-                    <h4><?php echo _e( $copyright, 'addax' ); ?></h4>
+                    <h4><?php  _e( $copyright, 'addax' ); ?></h4>
                   </div>
 
               </div>

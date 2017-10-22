@@ -42,6 +42,11 @@
 
   if ( ! function_exists( 'addax_page_slider' ) ) {
       function addax_page_slider() {
+
+            if( is_search() ):
+              return;
+            endif;
+
             global $post;
             $slider = get_post_meta( $post->ID , 'page_header_shortcode' ,true );
             $hide_nav = get_post_meta( $post->ID , 'hide_slider_navigation' ,true );
@@ -110,9 +115,11 @@
   /* ================ ADDAX TITLE BAR ============== */
 
   if ( ! function_exists( 'addax_title_bar' ) ) {
-    function addax_title_bar( $post_id )
+    function addax_title_bar()
     {
-        global $addax_theme_options;
+        global $addax_theme_options , $post;
+        $post_id = ( !empty( $post->ID ) ) ? $post->ID : '';
+
         $title_bar_visible = get_post_meta( $post_id, 'title_bar_show' , true );
         $title_bar_subheading = get_post_meta( $post_id, 'title_bar_subheading' , true );
         $title_bar_bg_color= get_post_meta( $post_id, 'title_bar_bg_color' , true );
@@ -131,6 +138,8 @@
           $page_title = $addax_theme_options['single-post-title-text'];
         elseif( is_page() ) :
           $page_title = get_the_title( $post_id );
+        elseif( is_search() ) :
+          $page_title = __( 'Search Results' , 'addax' );
         elseif( is_category() ) :
           $page_title = single_cat_title('', false);
         elseif( is_archive() && !is_tax() && !is_category() && !is_tag() ) :
@@ -143,7 +152,7 @@
         {
           $bg = 'background:' . $title_bar_bg_color . ';';
         }
-        elseif( $title_bar_background == 'image' && !empty( $title_bar_bg_image ) )
+        elseif( $title_bar_background == 'image' && !empty( $title_bar_bg_image ) || !is_search() || !is_archive() || !is_category() )
         {
             $title_bg_url = wp_get_attachment_image_src( $title_bar_bg_image , 'full' );
             $bg = 'background-image:url(' . $title_bg_url[0] . ');' ;
@@ -419,7 +428,7 @@
           } else if ( get_query_var('paged') ) {
 
               // Paginated archives
-              echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</strong></li>';
+              echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page' , 'addax') . ' ' . get_query_var('paged') . '</strong></li>';
 
           } else if ( is_search() ) {
 

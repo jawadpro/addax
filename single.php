@@ -29,7 +29,10 @@
             <a href="<?php echo comments_link(); ?>"><i class="fa fa-comments" aria-hidden="true"></i> <?php echo comments_number(); ?></a>
           </div>
           <br>
-          <?php the_content(); ?>
+          <?php
+          the_content();
+          the_tags();
+          ?>
           <div class="addax-share-button">
                         <a href="#">Share this Post</a>
                         <div class="icon-wrapper">
