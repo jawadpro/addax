@@ -46,10 +46,10 @@
     wp_enqueue_script( 'addax-macy-js' , ADDAX_TEMPLATE_URI . '/assets/js/macy.js', array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-custom-js' , ADDAX_TEMPLATE_URI . '/assets/js/custom.js', array( 'jquery' ), '' , true  );
 
-    //if( !empty( $gmap_key ) ) :
+    if( !empty( $gmap_key ) && $addax_theme_options['homepage-footer-map'] == true && is_front_page() ) :
     wp_enqueue_script( 'addax-map-api-js' , 'https://maps.googleapis.com/maps/api/js?key='.$gmap_key , array( 'jquery' ), '' , true  );
     wp_enqueue_script( 'addax-map-js' , ADDAX_TEMPLATE_URI . '/assets/js/map.js', array( 'jquery' ), '' , true  );
-    //endif;
+    endif;
 
     if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') ) {
       wp_enqueue_script( 'comment-reply' );
@@ -99,9 +99,17 @@
 add_action('wp_head' , 'addax_google_map_marker' );
 function addax_google_map_marker()
 {
+  global $addax_theme_options;
+  if( isset( $addax_theme_options['addax-map-icon'] ) )
+  {
+    $icon = $addax_theme_options['addax-map-icon']['url'];
+  }
+  else {
+    $icon = get_template_directory_uri(). '/assets/img/cd-icon-location.svg';
+  }
   ?>
   <script type="text/javascript">
-  var marker_url = "<?php echo get_template_directory_uri(). '/assets/img/cd-icon-location.svg'; ?>";
+  var marker_url = "<?php echo $icon; ?>";
   </script>
   <?php
 }

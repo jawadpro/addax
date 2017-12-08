@@ -156,6 +156,12 @@ function addax_meta_boxes( $meta_boxes ) {
 												'visible' => ['slider_button_color_type', '=' , 'gradient'],
 										),
 
+										array(
+												'id' 	=> 'button_text_color',
+												'name'	=> __( 'Button text color' , 'addax' ),
+												'type'	=> 'color',
+										),
+
 		)
 	);
 

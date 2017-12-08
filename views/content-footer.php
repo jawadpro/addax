@@ -78,10 +78,10 @@ $copyright = ( isset( $addax_theme_options['footer-copyright-text'] ) ) ? $addax
       </div>
 
   </footer>
-
-
+<?php if( isset( $addax_theme_options['homepage-footer-map'] ) && $addax_theme_options['homepage-footer-map'] == true && is_front_page()  ) :  ?>
   <section id="cd-google-map">
   <div id="google-container"></div>
   <div id="cd-zoom-in"></div>
   <div id="cd-zoom-out"></div>
   </section>
+<?php endif; ?>

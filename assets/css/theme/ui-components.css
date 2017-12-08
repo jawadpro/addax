@@ -152,7 +152,7 @@
     height: 2vh;
     -webkit-transform: translate(-150%, -50%);
             transform: translate(-150%, -50%);
-  } 
+  }
   100% {
     width: 5vh;
     height: 5vh;
@@ -2190,6 +2190,7 @@ input[type="submit"]:focus,button{
 #addax-page-title{
   width:100%;
   padding:60px 0;
+  background-color: #1e73be;
 }
 #addax-page-title h1{
   position:relative;
@@ -3503,3 +3504,11 @@ a#cancel-comment-reply-link {
     float: right;
 }
 
+/*Search Button*/
+
+button.s-search
+{
+border:none !important;
+background: none !important;
+position: absolute !important;
+}
