@@ -11,27 +11,15 @@ defined( 'ABSPATH' ) || exit;
 define( 'ADDAX_VERSION', '2.0.0' );
 
 require_once get_template_directory() . '/inc/block-styles.php';
-require_once get_template_directory() . '/inc/starter.php';
 
 /**
  * Theme setup.
  */
 function addax_setup() {
-	load_theme_textdomain( 'addax', get_template_directory() . '/languages' );
-
 	add_theme_support( 'wp-block-styles' );
 	add_theme_support( 'editor-styles' );
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'post-thumbnails' );
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 84,
-			'width'       => 221,
-			'flex-height' => true,
-			'flex-width'  => true,
-		)
-	);
 
 	add_editor_style( 'assets/css/addax.css' );
 
@@ -97,30 +85,25 @@ function addax_pattern_categories() {
 add_action( 'init', 'addax_pattern_categories', 9 );
 
 /**
- * Fall back to the bundled Addax logo when no site logo has been set.
+ * Show the site name, styled as a wordmark, when no site logo has been set.
+ *
+ * Keeps the header useful out of the box without bundling a logo image.
  *
  * @param string $block_content Rendered block.
- * @param array  $block         Parsed block.
  * @return string
  */
-function addax_site_logo_fallback( $block_content, $block ) {
+function addax_site_logo_fallback( $block_content ) {
 	if ( '' !== trim( $block_content ) ) {
 		return $block_content;
 	}
 
-	$width = isset( $block['attrs']['width'] ) ? (int) $block['attrs']['width'] : 150;
-	$src   = get_template_directory_uri() . '/assets/images/logo-sticky.png';
-
 	return sprintf(
-		'<div class="wp-block-site-logo is-addax-fallback"><a href="%1$s" class="custom-logo-link" rel="home"><img src="%2$s" class="custom-logo" width="%3$d" height="%4$d" alt="%5$s" /></a></div>',
+		'<p class="wp-block-site-logo addax-wordmark"><a href="%1$s" rel="home">%2$s</a></p>',
 		esc_url( home_url( '/' ) ),
-		esc_url( $src ),
-		$width,
-		(int) round( $width * 84 / 221 ),
-		esc_attr( get_bloginfo( 'name' ) )
+		esc_html( get_bloginfo( 'name' ) )
 	);
 }
-add_filter( 'render_block_core/site-logo', 'addax_site_logo_fallback', 10, 2 );
+add_filter( 'render_block_core/site-logo', 'addax_site_logo_fallback' );
 
 /**
  * Body classes used by the overlay header.

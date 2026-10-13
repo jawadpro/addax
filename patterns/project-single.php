@@ -75,5 +75,13 @@
 <h2 class="wp-block-heading has-text-align-center is-style-addax-underline"><?php esc_html_e( 'More work', 'addax' ); ?></h2>
 <!-- /wp:heading -->
 
-<!-- wp:addax/projects {"count":4,"columns":4,"showFilters":false,"align":"wide"} /--></section>
+<!-- wp:query {"queryId":4,"query":{"perPage":3,"pages":0,"offset":0,"postType":"addax-project","order":"desc","orderBy":"date","inherit":false},"align":"wide","layout":{"type":"default"}} -->
+<div class="wp-block-query alignwide"><!-- wp:post-template {"className":"is-style-addax-cards","layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3","sizeSlug":"addax-card"} /-->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"},"blockGap":"0.5rem"}},"layout":{"type":"default"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:post-title {"level":3,"isLink":true,"fontSize":"large"} /--></div>
+<!-- /wp:group -->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></section>
 <!-- /wp:group -->

@@ -3,7 +3,7 @@ Theme Name: Addax
 Theme URI: https://github.com/jawadpro/addax
 Author: Jawad
 Author URI: https://github.com/jawadpro
-Description: Addax is a bold agency and business block theme. Full Site Editing ready, with transparent and business headers, a portfolio, team and testimonial sections, and a library of ready-made patterns. Pair it with the Addax Core plugin for sliders, counters, progress charts, info boxes, tabs, client logos, projects, team and testimonial blocks.
+Description: Addax is a bold agency and business block theme. Full Site Editing ready, with transparent and business headers, a portfolio, team and testimonial sections, and a library of ready-made patterns. Every pattern is built from core blocks, so the theme works on its own.
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -11,7 +11,7 @@ Version: 2.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: addax
-Tags: block-patterns, block-styles, full-site-editing, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, one-column, two-columns, right-sidebar, portfolio, style-variations, template-editing, threaded-comments, translation-ready, accessibility-ready
+Tags: block-patterns, block-styles, full-site-editing, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, one-column, two-columns, right-sidebar, portfolio, style-variations, template-editing, threaded-comments, translation-ready
 */
 
 /* All styles live in theme.json and assets/css/addax.css. */

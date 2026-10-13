@@ -1,37 +1,55 @@
 <?php
 /**
- * Title: About (split with image)
+ * Title: About with image
  * Slug: addax/about-split
  * Categories: addax, about
- * Keywords: about, story, dna, split, image
+ * Keywords: about, story, split, image, checklist
  * Viewport Width: 1400
- * Description: Full-width two-column section: story and button on grey, a raised photo on the right.
+ * Description: Rounded image beside a badge, heading, story, checklist and button.
  *
  * @package Addax
  */
 ?>
-<!-- wp:columns {"align":"full","metadata":{"name":"About"},"style":{"spacing":{"blockGap":{"top":"0","left":"0"},"margin":{"top":"0","bottom":"0"}}}} -->
-<div class="wp-block-columns alignfull" style="margin-top:0;margin-bottom:0"><!-- wp:column {"verticalAlignment":"center","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"6vw","right":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|40"}},"backgroundColor":"base-3"} -->
-<div class="wp-block-column is-vertically-aligned-center has-base-3-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--60);padding-left:6vw"><!-- wp:heading {"className":"is-style-addax-underline addax-reveal"} -->
-<h2 class="wp-block-heading is-style-addax-underline addax-reveal"><?php esc_html_e( 'Our DNA', 'addax' ); ?></h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"className":"addax-reveal","fontSize":"large"} -->
-<p class="addax-reveal has-large-font-size"><?php esc_html_e( 'Plenty of agencies share the same what and how. Our partners work with us for our why and our who. We are minds and makers with business sense and creative chops, set on connecting people with what matters most: the experience.', 'addax' ); ?></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:buttons {"className":"addax-reveal"} -->
-<div class="wp-block-buttons addax-reveal"><!-- wp:button {"className":"is-style-addax-arrow"} -->
-<div class="wp-block-button is-style-addax-arrow"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'See what we stand for', 'addax' ); ?></a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
+<!-- wp:group {"tagName":"section","align":"full","metadata":{"name":"About"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|70"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:image {"aspectRatio":"4/5","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"addax-reveal","style":{"border":{"radius":"24px"}}} -->
+<figure class="wp-block-image size-full has-custom-border addax-reveal"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about.jpg' ) ); ?>" alt="" style="border-radius:24px;aspect-ratio:4/5;object-fit:cover"/></figure>
+<!-- /wp:image --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}}} -->
-<div class="wp-block-column" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/bg5.jpg' ) ); ?>","dimRatio":0,"isUserOverlayColor":true,"minHeight":420,"className":"addax-split-media is-raised","layout":{"type":"constrained"}} -->
-<div class="wp-block-cover addax-split-media is-raised" style="min-height:420px"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/bg5.jpg' ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph -->
-<p></p>
-<!-- /wp:paragraph --></div></div>
-<!-- /wp:cover --></div>
+<!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"blockGap":"var:preset|spacing|30"}}} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:paragraph {"className":"is-style-addax-badge"} -->
+<p class="is-style-addax-badge"><?php esc_html_e( 'About us', 'addax' ); ?></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading"><?php esc_html_e( 'A small studio with a big focus on outcomes', 'addax' ); ?></h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"is-style-addax-subheading"} -->
+<p class="is-style-addax-subheading"><?php esc_html_e( 'Plenty of agencies share the same what and how. Our partners work with us for our why: we connect people with what matters most, the experience.', 'addax' ); ?></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"className":"is-style-addax-check"} -->
+<ul class="wp-block-list is-style-addax-check"><!-- wp:list-item -->
+<li><?php esc_html_e( 'Senior people on every project, no hand-offs', 'addax' ); ?></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><?php esc_html_e( 'Fixed scopes and honest timelines', 'addax' ); ?></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><?php esc_html_e( 'Accessible, fast and easy to edit', 'addax' ); ?></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-addax-arrow"} -->
+<div class="wp-block-button is-style-addax-arrow"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'More about us', 'addax' ); ?></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
 <!-- /wp:column --></div>
-<!-- /wp:columns -->
+<!-- /wp:columns --></section>
+<!-- /wp:group -->

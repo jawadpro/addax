@@ -18,11 +18,11 @@ $addax_info = array(
 <!-- wp:group {"className":"addax-topbar","style":{"spacing":{"padding":{"top":"0.5rem","bottom":"0.5rem"}},"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"navy","textColor":"base","fontSize":"x-small","layout":{"type":"constrained"}} -->
 <div class="wp-block-group addax-topbar has-base-color has-navy-background-color has-text-color has-background has-link-color has-x-small-font-size" style="padding-top:0.5rem;padding-bottom:0.5rem"><!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
 <div class="wp-block-group alignwide"><!-- wp:group {"style":{"spacing":{"blockGap":"1.25rem"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"addax/options","args":{"key":"phone"}}}}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
 <p>+1 (555) 010-2030</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"addax/options","args":{"key":"email"}}}}} -->
+<!-- wp:paragraph -->
 <p>hello@example.com</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
@@ -47,7 +47,7 @@ $addax_info = array(
 <p class="has-contrast-color has-text-color has-small-font-size" style="font-weight:700"><?php echo esc_html( $addax_item[0] ); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"addax/options","args":{"key":"<?php echo esc_attr( $addax_item[2] ); ?>"}}}},"textColor":"muted","fontSize":"small"} -->
+<!-- wp:paragraph {"textColor":"muted","fontSize":"small"} -->
 <p class="has-muted-color has-text-color has-small-font-size"><?php echo esc_html( $addax_item[1] ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --><?php endforeach; ?></div>

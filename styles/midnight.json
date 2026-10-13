@@ -7,63 +7,83 @@
 			"palette": [
 				{
 					"slug": "base",
-					"color": "#0e1424",
+					"color": "#0b0b18",
 					"name": "Base"
 				},
 				{
 					"slug": "base-2",
-					"color": "#151d33",
+					"color": "#121226",
 					"name": "Base 2"
 				},
 				{
 					"slug": "base-3",
-					"color": "#1c2640",
+					"color": "#1b1b33",
 					"name": "Base 3"
 				},
 				{
 					"slug": "contrast",
-					"color": "#f4f6fb",
+					"color": "#f4f4fb",
 					"name": "Contrast"
 				},
 				{
 					"slug": "contrast-2",
-					"color": "#c3c9d8",
+					"color": "#c4c4d6",
 					"name": "Contrast 2"
 				},
 				{
 					"slug": "muted",
-					"color": "#8a93a8",
+					"color": "#8a8aa6",
 					"name": "Muted"
 				},
 				{
 					"slug": "primary",
-					"color": "#4d9bff",
+					"color": "#8b80ff",
 					"name": "Primary"
 				},
 				{
 					"slug": "primary-2",
-					"color": "#38c6ff",
+					"color": "#a99fff",
 					"name": "Primary 2"
 				},
 				{
 					"slug": "accent",
-					"color": "#b07cff",
+					"color": "#c084fc",
 					"name": "Accent"
 				},
 				{
 					"slug": "navy",
-					"color": "#0a0f1c",
+					"color": "#07070f",
 					"name": "Navy"
 				},
 				{
 					"slug": "charcoal",
-					"color": "#1a2238",
+					"color": "#16162b",
 					"name": "Charcoal"
 				},
 				{
 					"slug": "ink",
-					"color": "#070b16",
+					"color": "#050510",
 					"name": "Ink"
+				},
+				{
+					"slug": "peach",
+					"color": "#2a1f2a",
+					"name": "Peach"
+				},
+				{
+					"slug": "sky",
+					"color": "#16213b",
+					"name": "Sky"
+				},
+				{
+					"slug": "mint",
+					"color": "#14282a",
+					"name": "Mint"
+				},
+				{
+					"slug": "lilac",
+					"color": "#1d1a38",
+					"name": "Lilac"
 				}
 			]
 		}
@@ -72,15 +92,19 @@
 		"elements": {
 			"button": {
 				"color": {
-					"text": "#0e1424"
+					"background": "#f4f4fb",
+					"text": "#0b0b18"
+				},
+				"border": {
+					"color": "#f4f4fb"
 				},
 				":hover": {
 					"color": {
-						"background": "#f4f6fb",
-						"text": "#0e1424"
+						"background": "#8b80ff",
+						"text": "#0b0b18"
 					},
 					"border": {
-						"color": "#f4f6fb"
+						"color": "#8b80ff"
 					}
 				}
 			}

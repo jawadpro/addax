@@ -20,6 +20,7 @@ html {
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 }
 
 ::selection {
@@ -33,14 +34,21 @@ body {
 }
 
 :where(a, button, input, select, textarea, summary):focus-visible {
-	outline: 2px solid var(--wp--preset--color--accent);
+	outline: 2px solid var(--wp--preset--color--primary);
 	outline-offset: 2px;
 }
 
-/* Inline highlight in headings, e.g. "Crafting your <mark>Digital</mark> experience". */
+/* Highlight a word in a heading: "Take your brand to the <mark>next</mark> level". */
 :where(h1, h2, h3) mark:not([class*="-color"]) {
-	background: none;
-	color: var(--wp--preset--color--primary);
+	background: linear-gradient(120deg, var(--wp--preset--color--primary), var(--wp--preset--color--accent));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+/* Pastel and dark surfaces get rounded corners when used as cards. */
+:where(.wp-block-group, .wp-block-column).has-background:not(.alignfull):not(.alignwide):not(.addax-header):not(.addax-footer):not(.addax-topbar):not(.addax-menubar):not(.addax-page-header) {
+	border-radius: 20px;
 }
 
 /* ---------------------------------------------------------------
@@ -58,65 +66,56 @@ header.wp-block-template-part:has(.addax-header) {
 }
 
 .addax-header {
-	transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+	border-bottom: 1px solid transparent;
+	transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
 }
 
-.addax-header .wp-block-navigation-item__content {
-	padding-block: 0.35em;
-	position: relative;
+.addax-header .wp-block-navigation__container {
+	gap: 0.25rem;
 }
 
-/* Underline that grows from the centre on hover / for the current page. */
-.addax-header .wp-block-navigation .wp-block-navigation-item > .wp-block-navigation-item__content::after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	right: 50%;
-	bottom: -2px;
-	height: 2px;
-	background: currentColor;
-	transition: left 0.25s ease, right 0.25s ease;
+.addax-header .wp-block-navigation .wp-block-navigation-item > .wp-block-navigation-item__content {
+	padding: 0.5em 0.9em;
+	border-radius: 999px;
+	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.addax-header .wp-block-navigation .wp-block-navigation-item > .wp-block-navigation-item__content:hover::after,
-.addax-header .wp-block-navigation .current-menu-item > .wp-block-navigation-item__content::after {
-	left: 0;
-	right: 0;
+.addax-header .wp-block-navigation .wp-block-navigation-item > .wp-block-navigation-item__content:hover,
+.addax-header .wp-block-navigation .current-menu-item > .wp-block-navigation-item__content {
+	background: var(--wp--preset--color--lilac);
+	color: var(--wp--preset--color--primary);
 }
 
 .addax-header .wp-block-navigation__submenu-container {
 	min-width: 220px !important;
-	padding: 0.5rem 0;
-	border: 0 !important;
-	border-top: 3px solid var(--wp--preset--color--primary) !important;
+	padding: 0.5rem !important;
+	border: 1px solid var(--wp--preset--color--base-3) !important;
+	border-radius: 14px;
 	box-shadow: var(--wp--preset--shadow--lift);
 	color: var(--wp--preset--color--contrast) !important;
 	background: var(--wp--preset--color--base) !important;
 }
 
 .addax-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
-	padding: 0.55rem 1.25rem !important;
-}
-
-.addax-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content::after {
-	display: none;
-}
-
-.addax-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover {
-	color: var(--wp--preset--color--primary);
+	border-radius: 8px !important;
 }
 
 .addax-header-search .wp-block-search__button {
 	margin: 0;
-	padding: 0.5rem;
+	padding: 0.55rem;
 	border: 0;
+	border-radius: 50%;
 	background: transparent;
 	color: inherit;
 }
 
+.addax-header-search .wp-block-search__button:hover {
+	background: var(--wp--preset--color--lilac);
+}
+
 .addax-header-search .wp-block-search__input {
 	min-width: 220px;
-	border-radius: 5em;
+	border-radius: 999px;
 	padding-inline: 1rem;
 }
 
@@ -124,14 +123,17 @@ header.wp-block-template-part:has(.addax-header) {
 	min-width: 0;
 }
 
-/* Scrolled state (class set by addax.js). */
+/* Scrolled state (class set by addax.js): frosted glass. */
 .addax-is-scrolled .addax-header:not(.addax-header--business) {
 	padding-top: var(--wp--preset--spacing--10) !important;
 	padding-bottom: var(--wp--preset--spacing--10) !important;
-	box-shadow: 0 6px 24px rgba(17, 24, 39, 0.08);
+	background-color: rgb(255 255 255 / 0.82) !important;
+	-webkit-backdrop-filter: saturate(180%) blur(14px);
+	backdrop-filter: saturate(180%) blur(14px);
+	border-bottom-color: var(--wp--preset--color--base-3);
 }
 
-/* Transparent overlay header: floats over the first section, turns solid on scroll. */
+/* Transparent overlay header: floats over the first section. */
 header.wp-block-template-part:has(.addax-header--overlay) {
 	position: fixed;
 	left: 0;
@@ -142,38 +144,11 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 	position: absolute;
 }
 
-.addax-header--overlay .addax-logo img {
-	filter: brightness(0) invert(1);
-	transition: filter 0.3s ease;
-}
-
-.addax-is-scrolled .addax-header--overlay {
-	background-color: var(--wp--preset--color--base);
-	color: var(--wp--preset--color--contrast) !important;
-}
-
-.addax-is-scrolled .addax-header--overlay a,
-.addax-is-scrolled .addax-header--overlay .wp-block-navigation-item__content,
-.addax-is-scrolled .addax-header--overlay .wp-block-search__button {
-	color: var(--wp--preset--color--contrast) !important;
-}
-
-.addax-is-scrolled .addax-header--overlay .addax-logo img {
-	filter: none;
-}
-
-.addax-is-scrolled.addax-no-sticky .addax-header--overlay {
-	background-color: transparent;
-	box-shadow: none;
-}
-
-/* The page under an overlay header shouldn't have a gap above the first block. */
 .wp-site-blocks:has(.addax-header--overlay) > main,
 .wp-site-blocks:has(.addax-header--overlay) > .wp-block-group:first-of-type {
 	margin-top: 0;
 }
 
-/* A page title bar under an overlay header needs room for the header. */
 .wp-site-blocks:has(.addax-header--overlay) .addax-page-header {
 	padding-top: calc(var(--wp--preset--spacing--60) + 90px) !important;
 }
@@ -186,7 +161,7 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 
 .addax-header--business .addax-header-info > .wp-block-group {
 	padding-inline-start: 1rem;
-	border-inline-start: 3px solid var(--wp--preset--color--primary);
+	border-inline-start: 2px solid var(--wp--preset--color--primary);
 }
 
 .addax-header--business .addax-header-info p {
@@ -199,9 +174,16 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 	display: none;
 }
 
+.addax-menubar .wp-block-navigation .wp-block-navigation-item > .wp-block-navigation-item__content:hover,
+.addax-menubar .wp-block-navigation .current-menu-item > .wp-block-navigation-item__content {
+	background: rgb(255 255 255 / 0.15);
+	color: inherit;
+}
+
 @media (max-width: 781px) {
 	.addax-header--business .addax-header-info,
-	.addax-header--business .addax-topbar .wp-block-social-links {
+	.addax-header--business .addax-topbar .wp-block-social-links,
+	.addax-header .addax-header-cta {
 		display: none;
 	}
 }
@@ -214,13 +196,46 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 .addax-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
 	font-family: var(--wp--preset--font-family--heading);
 	font-size: var(--wp--preset--font-size--large);
+	font-weight: 600;
+}
+
+.addax-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content:hover {
+	background: transparent !important;
+	color: inherit !important;
 }
 
 .addax-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container {
-	border-top: 0 !important;
+	border: 0 !important;
 	box-shadow: none;
 	background: transparent !important;
 	color: inherit !important;
+}
+
+/* Site name shown in place of the logo until one is set. */
+.addax-wordmark {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--heading);
+	font-size: 1.5rem;
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: -0.03em;
+}
+
+.addax-wordmark a {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45em;
+	color: inherit;
+}
+
+.addax-wordmark a::before {
+	content: "";
+	width: 1.1em;
+	height: 1.1em;
+	border-radius: 0.3em;
+	background: linear-gradient(135deg, var(--wp--preset--color--primary-2), var(--wp--preset--color--primary));
+	-webkit-mask: radial-gradient(circle at 50% 50%, transparent 0.18em, #000 0.19em);
+	mask: radial-gradient(circle at 50% 50%, transparent 0.18em, #000 0.19em);
 }
 
 /* ---------------------------------------------------------------
@@ -229,29 +244,32 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 
 /* Buttons */
 .wp-block-button .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
 	transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.wp-block-button:not(.is-style-addax-outline):not(.is-style-addax-light):not(.is-style-outline) .wp-block-button__link:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 10px 24px rgba(0, 118, 255, 0.25);
+.wp-block-button:not(.is-style-addax-outline):not(.is-style-addax-light):not(.is-style-addax-soft):not(.is-style-outline) .wp-block-button__link:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 24px rgb(79 70 229 / 0.28);
 }
 
 .wp-block-button.is-style-addax-outline .wp-block-button__link {
 	background: transparent;
-	border-color: var(--wp--preset--color--muted);
-	color: var(--wp--preset--color--contrast-2);
+	border-color: rgb(15 15 26 / 0.18);
+	color: var(--wp--preset--color--contrast);
 }
 
 .wp-block-button.is-style-addax-outline .wp-block-button__link:hover {
-	border-color: var(--wp--preset--color--primary);
-	background: var(--wp--preset--color--primary);
+	border-color: var(--wp--preset--color--contrast);
+	background: var(--wp--preset--color--contrast);
 	color: var(--wp--preset--color--base);
 }
 
 .wp-block-button.is-style-addax-light .wp-block-button__link {
 	background: transparent;
-	border-color: var(--wp--preset--color--base);
+	border-color: rgb(255 255 255 / 0.5);
 	color: var(--wp--preset--color--base);
 }
 
@@ -261,25 +279,32 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 	color: var(--wp--preset--color--contrast);
 }
 
+.wp-block-button.is-style-addax-soft .wp-block-button__link {
+	background: var(--wp--preset--color--lilac);
+	border-color: var(--wp--preset--color--lilac);
+	color: var(--wp--preset--color--primary);
+}
+
+.wp-block-button.is-style-addax-soft .wp-block-button__link:hover {
+	background: var(--wp--preset--color--primary);
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--base);
+}
+
 .wp-block-button.is-style-addax-arrow .wp-block-button__link::after {
 	content: "\2192";
 	display: inline-block;
-	width: 0;
-	margin-inline-start: 0;
-	opacity: 0;
-	transition: width 0.25s ease, margin 0.25s ease, opacity 0.25s ease;
+	transition: transform 0.25s ease;
 }
 
 .wp-block-button.is-style-addax-arrow .wp-block-button__link:hover::after {
-	width: 1em;
-	margin-inline-start: 0.5em;
-	opacity: 1;
+	transform: translateX(4px);
 }
 
 /* Headings */
 .is-style-addax-underline {
 	position: relative;
-	padding-bottom: 0.45em;
+	padding-bottom: 0.4em;
 }
 
 .is-style-addax-underline::after {
@@ -287,9 +312,10 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	width: 40px;
-	height: 3px;
-	background: var(--wp--preset--color--primary);
+	width: 48px;
+	height: 4px;
+	border-radius: 4px;
+	background: linear-gradient(90deg, var(--wp--preset--color--primary), var(--wp--preset--color--accent));
 }
 
 .is-style-addax-underline.has-text-align-center::after {
@@ -313,22 +339,61 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 	flex: 1;
 	height: 1px;
 	max-width: 40%;
-	background: var(--wp--preset--color--primary);
+	background: var(--wp--preset--color--base-3);
 }
 
 /* Paragraphs */
 .is-style-addax-subheading {
 	font-size: var(--wp--preset--font-size--large);
-	font-weight: 300;
-	line-height: 1.5;
+	line-height: 1.55;
+	color: var(--wp--preset--color--contrast-2);
+}
+
+.has-text-color.is-style-addax-subheading {
+	color: inherit;
+	opacity: 0.85;
 }
 
 .is-style-addax-eyebrow {
 	font-size: var(--wp--preset--font-size--x-small);
-	font-weight: 700;
-	letter-spacing: 0.2em;
+	font-weight: 600;
+	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	color: var(--wp--preset--color--primary);
+}
+
+/* Pill badge, e.g. "NEW · Find your perfect team". A leading <strong> becomes the coloured chip. */
+p.is-style-addax-badge {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	width: fit-content;
+	padding: 0.3rem 0.9rem 0.3rem 0.3rem;
+	border: 1px solid var(--wp--preset--color--base-3);
+	border-radius: 999px;
+	background: var(--wp--preset--color--base);
+	box-shadow: var(--wp--preset--shadow--soft);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--contrast);
+}
+
+p.is-style-addax-badge.has-text-align-center {
+	margin-inline: auto;
+}
+
+p.is-style-addax-badge strong {
+	padding: 0.2rem 0.6rem;
+	border-radius: 999px;
+	background: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--base);
+	font-weight: 700;
+}
+
+p.is-style-addax-badge:not(:has(strong)) {
+	padding-left: 0.9rem;
 }
 
 .is-style-addax-watermark {
@@ -343,8 +408,7 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 	font-weight: 800;
 	line-height: 1;
 	text-align: center;
-	text-transform: uppercase;
-	letter-spacing: -0.02em;
+	letter-spacing: -0.05em;
 	opacity: 0.05;
 	pointer-events: none;
 	user-select: none;
@@ -360,27 +424,35 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 	z-index: 1;
 }
 
-/* Details as accordion (replaces the old Addax Accordion shortcode). */
+/* Details as accordion */
 .wp-block-details.is-style-addax-accordion {
-	border: 1px solid rgba(127, 127, 127, 0.25);
-	border-radius: 4px;
+	border: 1px solid var(--wp--preset--color--base-3);
+	border-radius: 14px;
 	padding: 0;
 	overflow: hidden;
+	background: var(--wp--preset--color--base);
+	transition: box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .wp-block-details.is-style-addax-accordion + .wp-block-details.is-style-addax-accordion {
 	margin-top: 0.75rem;
 }
 
+.wp-block-details.is-style-addax-accordion[open] {
+	border-color: transparent;
+	box-shadow: var(--wp--preset--shadow--lift);
+}
+
 .wp-block-details.is-style-addax-accordion > summary {
 	position: relative;
-	padding: 1rem 3.25rem 1rem 1.25rem;
+	padding: 1.1rem 3.5rem 1.1rem 1.4rem;
 	list-style: none;
 	cursor: pointer;
 	font-family: var(--wp--preset--font-family--heading);
 	font-size: 1.0625rem;
+	font-weight: 600;
+	letter-spacing: -0.01em;
 	color: var(--wp--preset--color--contrast);
-	transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .wp-block-details.is-style-addax-accordion > summary::-webkit-details-marker {
@@ -390,42 +462,49 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 .wp-block-details.is-style-addax-accordion > summary::after {
 	content: "+";
 	position: absolute;
-	right: 1.25rem;
+	right: 1.1rem;
 	top: 50%;
-	transform: translateY(-50%);
+	display: grid;
+	place-items: center;
+	width: 1.75rem;
+	height: 1.75rem;
+	border-radius: 50%;
+	background: var(--wp--preset--color--lilac);
+	color: var(--wp--preset--color--primary);
 	font-family: var(--wp--preset--font-family--body);
-	font-size: 1.5rem;
+	font-size: 1.1rem;
 	line-height: 1;
-	transition: transform 0.25s ease;
-}
-
-.wp-block-details.is-style-addax-accordion[open] > summary {
-	background: var(--wp--preset--color--primary);
-	color: var(--wp--preset--color--base);
+	transform: translateY(-50%);
+	transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
 .wp-block-details.is-style-addax-accordion[open] > summary::after {
+	background: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--base);
 	transform: translateY(-50%) rotate(45deg);
 }
 
 .wp-block-details.is-style-addax-accordion > :not(summary) {
-	padding-inline: 1.25rem;
+	padding-inline: 1.4rem;
+	color: var(--wp--preset--color--contrast-2);
 }
 
 .wp-block-details.is-style-addax-accordion > :last-child:not(summary) {
-	padding-bottom: 1.25rem;
+	padding-bottom: 1.3rem;
 }
 
 /* Groups */
 .is-style-addax-card {
 	background: var(--wp--preset--color--base);
-	border-radius: 8px;
+	border: 1px solid var(--wp--preset--color--base-3);
+	border-radius: 20px;
 	box-shadow: var(--wp--preset--shadow--soft);
-	transition: box-shadow 0.3s ease, transform 0.3s ease;
+	transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .is-style-addax-card:hover {
 	transform: translateY(-4px);
+	border-color: transparent;
 	box-shadow: var(--wp--preset--shadow--lift);
 }
 
@@ -437,15 +516,33 @@ header.wp-block-template-part:has(.addax-header--overlay) {
 	box-sizing: border-box;
 }
 
-a.is-style-addax-tile,
-.is-style-addax-tile a {
-	transition: opacity 0.25s ease;
+/* Soft lavender glow with a dot field: hero and feature sections. */
+.is-style-addax-glow {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	background:
+		radial-gradient(50% 60% at 12% 18%, #e5defe 0%, rgb(229 222 254 / 0) 70%),
+		radial-gradient(45% 55% at 90% 75%, #ddd7ff 0%, rgb(221 215 255 / 0) 70%),
+		linear-gradient(180deg, var(--wp--preset--color--base-2) 0%, var(--wp--preset--color--base) 100%);
+}
+
+.is-style-addax-glow::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-image: radial-gradient(rgb(79 70 229 / 0.18) 1.2px, transparent 1.3px);
+	background-size: 16px 16px;
+	-webkit-mask-image: radial-gradient(60% 55% at 50% 40%, #000 0%, transparent 75%);
+	mask-image: radial-gradient(60% 55% at 50% 40%, #000 0%, transparent 75%);
+	pointer-events: none;
 }
 
 /* Images */
 .wp-block-image.is-style-addax-lift img {
-	border-radius: 8px;
-	box-shadow: var(--wp--preset--shadow--lift);
+	border-radius: 20px;
+	box-shadow: var(--wp--preset--shadow--deep);
 }
 
 /* Lists */
@@ -455,18 +552,17 @@ a.is-style-addax-tile,
 }
 
 .is-style-addax-links li {
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.6rem;
 }
 
 .is-style-addax-links a {
 	color: inherit;
-	opacity: 0.8;
-	transition: opacity 0.2s ease, padding 0.2s ease;
+	opacity: 0.72;
+	transition: opacity 0.2s ease;
 }
 
 .is-style-addax-links a:hover {
 	opacity: 1;
-	padding-inline-start: 4px;
 }
 
 .is-style-addax-check {
@@ -476,20 +572,19 @@ a.is-style-addax-tile,
 
 .is-style-addax-check li {
 	position: relative;
-	padding-left: 1.75rem;
-	margin-bottom: 0.6rem;
+	padding-left: 2rem;
+	margin-bottom: 0.7rem;
 }
 
 .is-style-addax-check li::before {
 	content: "";
 	position: absolute;
 	left: 0;
-	top: 0.45em;
-	width: 1rem;
-	height: 0.55rem;
-	border-left: 2px solid var(--wp--preset--color--primary);
-	border-bottom: 2px solid var(--wp--preset--color--primary);
-	transform: rotate(-45deg);
+	top: 0.2em;
+	width: 1.3rem;
+	height: 1.3rem;
+	border-radius: 50%;
+	background: var(--wp--preset--color--lilac) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 0.8rem no-repeat;
 }
 
 /* Post cards */
@@ -497,139 +592,324 @@ a.is-style-addax-tile,
 	display: flex;
 	flex-direction: column;
 	background: var(--wp--preset--color--base);
-	border-radius: 8px;
+	border: 1px solid var(--wp--preset--color--base-3);
+	border-radius: 20px;
 	overflow: hidden;
-	box-shadow: var(--wp--preset--shadow--soft);
-	transition: box-shadow 0.3s ease, transform 0.3s ease;
+	transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .wp-block-post-template.is-style-addax-cards > li:hover {
 	transform: translateY(-4px);
+	border-color: transparent;
 	box-shadow: var(--wp--preset--shadow--lift);
 }
 
 .wp-block-post-template.is-style-addax-cards .wp-block-post-featured-image {
 	margin: 0;
 	overflow: hidden;
+	border-radius: 0;
 }
 
 .wp-block-post-template.is-style-addax-cards .wp-block-post-featured-image img {
+	border-radius: 0;
 	transition: transform 0.5s ease;
 }
 
 .wp-block-post-template.is-style-addax-cards > li:hover .wp-block-post-featured-image img {
-	transform: scale(1.05);
+	transform: scale(1.04);
+}
+
+.wp-block-post-template.is-style-addax-cards .wp-block-post-terms a {
+	display: inline-block;
+	padding: 0.2rem 0.6rem;
+	border-radius: 999px;
+	background: var(--wp--preset--color--lilac);
+	color: var(--wp--preset--color--primary);
 }
 
 /* ---------------------------------------------------------------
  * Sections
  * ------------------------------------------------------------- */
 
-.addax-widget-heading {
+/* Hero: floating avatars and glossy shapes around the headline. */
+.addax-hero {
 	position: relative;
-	margin-bottom: 1.75rem !important;
-	font-family: var(--wp--preset--font-family--body) !important;
-	font-size: var(--wp--preset--font-size--x-small) !important;
-	font-weight: 700 !important;
-	letter-spacing: 0.18em;
-	text-transform: uppercase;
 }
 
-.addax-widget-heading::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: -0.75rem;
-	width: 22px;
-	height: 2px;
-	background: currentColor;
-}
-
-.addax-sidebar .addax-widget-heading::after {
-	background: var(--wp--preset--color--primary);
-}
-
-.addax-footer {
-	color: rgba(255, 255, 255, 0.82);
-}
-
-.addax-footer .wp-block-social-links {
-	gap: 1.25rem;
-}
-
-.addax-footer .wp-block-social-link {
-	opacity: 0.75;
-	transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.addax-footer .wp-block-social-link:hover {
-	opacity: 1;
-	transform: translateY(-2px);
-}
-
-/* Section with dark background: donut charts need a matching hole. */
-.has-background .wp-block-addax-progress.is-variant-donut {
-	--addax-donut-hole: var(--addax-section-bg, var(--wp--preset--color--charcoal));
-	--addax-track: rgba(255, 255, 255, 0.15);
-}
-
-.has-base-background-color .wp-block-addax-progress.is-variant-donut,
-.has-base-2-background-color .wp-block-addax-progress.is-variant-donut {
-	--addax-donut-hole: var(--wp--preset--color--base);
-	--addax-track: rgba(127, 127, 127, 0.2);
-}
-
-.has-base-2-background-color .wp-block-addax-progress.is-variant-donut {
-	--addax-donut-hole: var(--wp--preset--color--base-2);
-}
-
-.has-charcoal-background-color { --addax-section-bg: var(--wp--preset--color--charcoal); }
-.has-navy-background-color { --addax-section-bg: var(--wp--preset--color--navy); }
-.has-contrast-background-color { --addax-section-bg: var(--wp--preset--color--contrast); }
-.has-ink-background-color { --addax-section-bg: var(--wp--preset--color--ink); }
-
-/* Team grid: tiles touch, like the original. */
-.addax-team-grid {
-	gap: 0 !important;
-}
-
-.addax-team-grid > * {
+.addax-hero__orbit {
+	position: absolute !important;
+	inset: 0;
+	z-index: 0;
 	margin: 0 !important;
+	max-width: none !important;
+	pointer-events: none;
 }
 
-.addax-team-grid .is-style-addax-tile {
-	aspect-ratio: 3 / 4;
-	height: auto;
-}
-
-/* CTA banner shapes */
-.addax-cta {
+.addax-hero > :not(.addax-hero__orbit) {
 	position: relative;
+	z-index: 1;
+}
+
+.addax-hero__orbit .wp-block-image {
+	position: absolute;
+	margin: 0;
+	animation: addax-float 7s ease-in-out infinite;
+}
+
+.addax-hero__orbit .wp-block-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 50%;
+	border: 4px solid var(--wp--preset--color--base);
+	box-shadow: 0 12px 30px rgb(15 15 26 / 0.15);
+	object-fit: cover;
+	object-position: 50% 30%;
+	aspect-ratio: 1;
+}
+
+.addax-hero__orbit .addax-gem img {
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	aspect-ratio: auto;
+	object-fit: contain;
+}
+
+.addax-hero__orbit > :nth-child(1) { top: 14%; left: 12%; width: 76px; animation-delay: -1s; }
+.addax-hero__orbit > :nth-child(2) { top: 60%; left: 10%; width: 84px; animation-delay: -3s; }
+.addax-hero__orbit > :nth-child(3) { top: 44%; left: 15%; width: 60px; animation-delay: -5s; }
+.addax-hero__orbit > :nth-child(4) { top: 11%; right: 13%; width: 92px; animation-delay: -2s; }
+.addax-hero__orbit > :nth-child(5) { top: 38%; right: 6%; width: 62px; animation-delay: -4s; }
+.addax-hero__orbit > :nth-child(6) { top: 62%; right: 12%; width: 78px; animation-delay: -6s; }
+.addax-hero__orbit > :nth-child(7) { top: 32%; left: 4%; width: 64px; animation-duration: 9s; }
+.addax-hero__orbit > :nth-child(8) { top: 56%; right: 3%; width: 88px; animation-duration: 10s; animation-delay: -3s; }
+
+@keyframes addax-float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-14px);
+	}
+}
+
+@media (max-width: 1100px) {
+	.addax-hero__orbit {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.addax-hero__orbit .wp-block-image {
+		animation: none;
+	}
+}
+
+/* Logo strip: muted until hover. */
+.addax-logo-row .wp-block-image {
+	margin: 0;
+}
+
+.addax-logo-row .wp-block-image img {
+	height: 30px;
+	width: auto;
+	border-radius: 0;
+	opacity: 0.7;
+	transition: opacity 0.25s ease;
+}
+
+.addax-logo-row .wp-block-image:hover img {
+	opacity: 1;
+}
+
+/* Feature cards with an icon tile. */
+.addax-feature {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.addax-feature:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--wp--preset--shadow--lift);
+}
+
+.addax-feature .addax-icon-tile {
+	display: inline-grid;
+	place-items: center;
+	width: 64px;
+	height: 64px;
+	margin: 0;
+	border-radius: 16px;
+	background: var(--wp--preset--color--base);
+	box-shadow: var(--wp--preset--shadow--soft);
+}
+
+.addax-feature .addax-icon-tile img {
+	width: 40px;
+	height: 40px;
+	border-radius: 0;
+}
+
+/* UI snippet inside a pastel card. */
+.addax-stretch {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.addax-snippet {
+	margin-top: auto !important;
+}
+
+.addax-snippet img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 0 !important;
+}
+
+/* Stats */
+.addax-stat-number {
+	background: linear-gradient(120deg, var(--wp--preset--color--contrast) 30%, var(--wp--preset--color--primary));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+/* Team cards */
+.addax-member .wp-block-image {
+	margin: 0;
+	overflow: hidden;
+	border-radius: 20px;
+}
+
+.addax-member .wp-block-image img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.addax-member:hover .wp-block-image img {
+	transform: scale(1.05);
+}
+
+/* Testimonial cards */
+.addax-quote-card .wp-block-quote {
+	margin: 0;
+}
+
+.addax-quote-card .wp-block-quote p {
+	color: var(--wp--preset--color--contrast);
+	font-size: 1.0625rem;
+	line-height: 1.6;
+}
+
+.addax-stars {
+	color: #f5b301;
+	letter-spacing: 0.15em;
+}
+
+.addax-avatar {
+	margin: 0;
+}
+
+.addax-avatar img {
+	width: 44px;
+	height: 44px;
+	border-radius: 50% !important;
+	object-fit: cover;
+	object-position: 50% 30%;
+}
+
+/* Numbered process steps. */
+.addax-step-number {
+	display: inline-grid;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 12px;
+	background: var(--wp--preset--color--lilac);
+	color: var(--wp--preset--color--primary);
+	font-weight: 700;
+	font-size: 0.875rem;
+}
+
+/* Work gallery hover. */
+.addax-work-gallery .wp-block-image {
+	overflow: hidden;
+	border-radius: 20px;
+}
+
+.addax-work-gallery .wp-block-image img {
+	transition: transform 0.6s ease;
+}
+
+.addax-work-gallery .wp-block-image:hover img {
+	transform: scale(1.05);
+}
+
+/* Dark call-to-action card with a glow. */
+.addax-cta-card {
+	position: relative;
+	overflow: hidden;
 	isolation: isolate;
 }
 
-.addax-cta::before {
+.addax-cta-card::before {
 	content: "";
 	position: absolute;
 	inset: 0;
 	z-index: -1;
-	background: url("../images/cta-shapes.png") center / cover no-repeat;
-	opacity: 0.6;
+	background: url("../images/cta-shapes.svg") center / cover no-repeat;
+	opacity: 0.35;
 	pointer-events: none;
 }
 
-/* Split "about" section image column. */
+/* Split "about" section image. */
 .addax-split-media {
 	min-height: 420px;
-	background-size: cover;
-	background-position: center;
+	border-radius: 24px;
+	overflow: hidden;
 }
 
-@media (min-width: 782px) {
-	.addax-split-media.is-raised {
-		margin-top: -20px !important;
-		box-shadow: var(--wp--preset--shadow--deep);
-	}
+/* Widget headings in footer and sidebar. */
+.addax-widget-heading {
+	margin-bottom: 1.25rem !important;
+	font-family: var(--wp--preset--font-family--body) !important;
+	font-size: var(--wp--preset--font-size--small) !important;
+	font-weight: 600 !important;
+	letter-spacing: 0;
+}
+
+.addax-footer {
+	color: rgb(255 255 255 / 0.7);
+}
+
+.addax-footer .addax-widget-heading {
+	color: var(--wp--preset--color--base);
+}
+
+.addax-footer .wp-block-social-links {
+	gap: 0.5rem;
+}
+
+.addax-footer .wp-block-social-link {
+	transition: transform 0.2s ease;
+}
+
+.addax-footer .wp-block-social-links.is-style-logos-only .wp-block-social-link a {
+	padding: 0.55rem;
+	border-radius: 50%;
+	background: rgb(255 255 255 / 0.08);
+}
+
+.addax-footer .wp-block-social-link:hover {
+	transform: translateY(-2px);
 }
 
 /* Page title bar */
@@ -638,46 +918,42 @@ a.is-style-addax-tile,
 	overflow: hidden;
 }
 
-.addax-page-header::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	z-index: 0;
-	background: url("../images/cta-shapes.png") center / cover no-repeat;
-	opacity: 0.25;
-	pointer-events: none;
-}
-
-.addax-page-header > * {
-	position: relative;
-	z-index: 1;
-}
-
 .addax-page-header .wp-block-post-title,
 .addax-page-header .wp-block-query-title {
 	margin-top: 0;
 }
 
 /* Sidebar */
+.addax-sidebar > .wp-block-group {
+	padding: 1.5rem;
+	border: 1px solid var(--wp--preset--color--base-3);
+	border-radius: 20px;
+}
+
 .addax-sidebar .wp-block-categories {
 	list-style: none;
 	padding: 0;
+	margin: 0;
 }
 
 .addax-sidebar .wp-block-categories li {
 	display: flex;
 	justify-content: space-between;
-	padding: 0.65rem 0;
-	border-bottom: 1px solid rgba(127, 127, 127, 0.18);
-	transition: padding 0.2s ease;
+	padding: 0.55rem 0;
+	border-bottom: 1px solid var(--wp--preset--color--base-3);
 }
 
-.addax-sidebar .wp-block-categories li:hover {
-	padding-inline-start: 5px;
+.addax-sidebar .wp-block-categories li:last-child {
+	border-bottom: 0;
 }
 
-.addax-sidebar .wp-block-categories a {
+.addax-sidebar .wp-block-categories a,
+.addax-sidebar .addax-latest-posts a {
 	color: var(--wp--preset--color--contrast);
+}
+
+.addax-sidebar .addax-latest-posts {
+	margin: 0;
 }
 
 .addax-sidebar .addax-latest-posts li {
@@ -685,14 +961,17 @@ a.is-style-addax-tile,
 	margin-bottom: 1rem;
 }
 
+.addax-sidebar .addax-latest-posts li:last-child {
+	margin-bottom: 0;
+}
+
 .addax-sidebar .addax-latest-posts a {
-	color: var(--wp--preset--color--contrast);
 	font-weight: 600;
 	line-height: 1.4;
 }
 
 .addax-sidebar .addax-latest-posts .wp-block-latest-posts__featured-image img {
-	border-radius: 4px;
+	border-radius: 10px;
 	object-fit: cover;
 }
 
@@ -700,29 +979,38 @@ a.is-style-addax-tile,
 	display: inline-block;
 	margin: 0 0.35rem 0.5rem 0;
 	padding: 0.25rem 0.75rem;
-	border: 1px solid rgba(127, 127, 127, 0.3);
-	border-radius: 5em;
-	color: var(--wp--preset--color--contrast-2);
-	text-transform: lowercase;
+	border-radius: 999px;
+	background: var(--wp--preset--color--lilac);
+	color: var(--wp--preset--color--primary);
 	transition: all 0.2s ease;
 }
 
 .addax-sidebar .wp-block-tag-cloud a:hover {
-	border-color: var(--wp--preset--color--primary);
 	background: var(--wp--preset--color--primary);
 	color: var(--wp--preset--color--base);
 }
 
-/* Search */
-.wp-block-search__input {
-	border: 1px solid rgba(127, 127, 127, 0.35);
-	border-radius: 4px;
-	padding: 0.7rem 1rem;
+/* Forms */
+.wp-block-search__input,
+.wp-block-post-comments-form input:not([type="submit"]):not([type="checkbox"]),
+.wp-block-post-comments-form textarea {
+	border: 1px solid var(--wp--preset--color--base-3);
+	border-radius: 12px;
+	padding: 0.75rem 1rem;
+	background: var(--wp--preset--color--base);
 	font: inherit;
 }
 
+.wp-block-search__inside-wrapper {
+	gap: 0.5rem;
+}
+
 .wp-block-search__button {
-	border-radius: 4px;
+	border-radius: 12px;
+}
+
+.wp-block-post-comments-form input[type="submit"] {
+	border-radius: 999px;
 }
 
 /* Pagination */
@@ -736,12 +1024,12 @@ a.is-style-addax-tile,
 	min-width: 2.5rem;
 	height: 2.5rem;
 	margin: 0 0.15rem;
-	border-radius: 50%;
+	border-radius: 12px;
 	color: var(--wp--preset--color--contrast);
 }
 
 .wp-block-query-pagination-numbers .page-numbers.current {
-	background: var(--wp--preset--color--primary);
+	background: var(--wp--preset--color--contrast);
 	color: var(--wp--preset--color--base);
 }
 
@@ -754,30 +1042,29 @@ a.is-style-addax-tile,
 	font-size: var(--wp--preset--font-size--large);
 }
 
-.wp-block-post-comments-form input:not([type="submit"]):not([type="checkbox"]),
-.wp-block-post-comments-form textarea {
-	border: 1px solid rgba(127, 127, 127, 0.35);
-	border-radius: 4px;
-	padding: 0.7rem 1rem;
-	font: inherit;
-}
-
-.wp-block-post-comments-form input[type="submit"] {
-	border-radius: 5em;
-}
-
-/* Project details list on single project pages. */
+/* Project details card on single project pages. */
 .addax-project-facts .addax-fact {
 	padding-bottom: 0.9rem;
-	border-bottom: 1px solid rgba(127, 127, 127, 0.18);
+	border-bottom: 1px solid var(--wp--preset--color--base-3);
 }
 
 .addax-project-facts .addax-fact > * {
 	margin: 0;
 }
 
+.addax-project-facts .addax-fact:has(> p:last-child:empty),
+.addax-project-facts .addax-fact:not(:has(> :nth-child(2))) {
+	display: none;
+}
+
+.addax-project-facts .wp-block-button:has(a[href=""]),
+.addax-project-facts .wp-block-button:has(a[href="#"]),
+.addax-project-facts .wp-block-button:has(a:not([href])) {
+	display: none;
+}
+
 /* ---------------------------------------------------------------
- * Back to top (button output by Addax Core)
+ * Back to top (button output by the Addax Core plugin, if active)
  * ------------------------------------------------------------- */
 
 .addax-to-top {
@@ -790,9 +1077,9 @@ a.is-style-addax-tile,
 	width: 46px;
 	height: 46px;
 	border-radius: 50%;
-	background: var(--wp--preset--color--primary);
+	background: var(--wp--preset--color--contrast);
 	color: var(--wp--preset--color--base) !important;
-	box-shadow: 0 8px 24px rgba(0, 118, 255, 0.35);
+	box-shadow: 0 10px 28px rgb(15 15 26 / 0.25);
 	opacity: 0;
 	visibility: hidden;
 	transform: translateY(12px);
@@ -811,7 +1098,7 @@ a.is-style-addax-tile,
 }
 
 .addax-to-top:hover {
-	background: var(--wp--preset--color--navy);
+	background: var(--wp--preset--color--primary);
 }
 
 /* ---------------------------------------------------------------
@@ -820,18 +1107,18 @@ a.is-style-addax-tile,
 
 .addax-js body:not(.addax-no-reveal) .addax-reveal:not(.is-revealed) {
 	opacity: 0;
-	transform: translateY(28px);
+	transform: translateY(24px);
 }
 
 .addax-js body:not(.addax-no-reveal) .addax-reveal {
 	transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.addax-js .addax-reveal-stagger > *:nth-child(2) { transition-delay: 0.12s; }
-.addax-js .addax-reveal-stagger > *:nth-child(3) { transition-delay: 0.24s; }
-.addax-js .addax-reveal-stagger > *:nth-child(4) { transition-delay: 0.36s; }
-.addax-js .addax-reveal-stagger > *:nth-child(5) { transition-delay: 0.48s; }
-.addax-js .addax-reveal-stagger > *:nth-child(6) { transition-delay: 0.6s; }
+.addax-js .addax-reveal-stagger > *:nth-child(2) { transition-delay: 0.08s; }
+.addax-js .addax-reveal-stagger > *:nth-child(3) { transition-delay: 0.16s; }
+.addax-js .addax-reveal-stagger > *:nth-child(4) { transition-delay: 0.24s; }
+.addax-js .addax-reveal-stagger > *:nth-child(5) { transition-delay: 0.32s; }
+.addax-js .addax-reveal-stagger > *:nth-child(6) { transition-delay: 0.4s; }
 
 @media (prefers-reduced-motion: reduce) {
 	.addax-js body .addax-reveal:not(.is-revealed) {
@@ -844,7 +1131,10 @@ a.is-style-addax-tile,
 	}
 }
 
-/* In the editor, everything is always visible. */
+/* ---------------------------------------------------------------
+ * Editor
+ * ------------------------------------------------------------- */
+
 .editor-styles-wrapper .addax-reveal {
 	opacity: 1 !important;
 	transform: none !important;
@@ -854,43 +1144,28 @@ a.is-style-addax-tile,
 	position: relative !important;
 }
 
-.editor-styles-wrapper .addax-header--overlay {
-	background: var(--wp--preset--color--navy);
-}
-
-/* ---------------------------------------------------------------
- * Responsive helpers
- * ------------------------------------------------------------- */
-
-@media (max-width: 781px) {
-	.addax-hide-mobile {
-		display: none !important;
-	}
-
-	.addax-split-media.is-raised {
-		margin-top: 0 !important;
-	}
-}
-
-.addax-project-facts .addax-fact:has(> p:last-child:empty),
-.addax-project-facts .addax-fact:not(:has(> :nth-child(2))) {
-	display: none;
-}
-
-.addax-project-facts .wp-block-button:has(a[href=""]),
-.addax-project-facts .wp-block-button:has(a[href="#"]),
-.addax-project-facts .wp-block-button:has(a:not([href])) {
-	display: none;
-}
-
 .editor-styles-wrapper .addax-project-facts .addax-fact,
 .editor-styles-wrapper .addax-project-facts .wp-block-button {
 	display: block !important;
 }
 
-.wp-block-column > .addax-split-media {
-	height: 100%;
+.editor-styles-wrapper .addax-hero__orbit {
+	position: relative !important;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: center;
 }
+
+.editor-styles-wrapper .addax-hero__orbit .wp-block-image {
+	position: static;
+	width: 64px !important;
+	animation: none;
+}
+
+/* ---------------------------------------------------------------
+ * Responsive
+ * ------------------------------------------------------------- */
 
 /* WordPress 6.6–6.8 render "fixed column" grid groups without a mobile fallback. */
 @media (max-width: 1024px) {
@@ -900,7 +1175,13 @@ a.is-style-addax-tile,
 }
 
 @media (max-width: 600px) {
-	.wp-block-group.is-layout-grid:not(.addax-grid-fixed):not(.addax-team-grid) {
+	.wp-block-group.is-layout-grid:not(.addax-grid-fixed) {
 		grid-template-columns: minmax(0, 1fr) !important;
+	}
+}
+
+@media (max-width: 781px) {
+	.addax-hide-mobile {
+		display: none !important;
 	}
 }

@@ -1,0 +1,168 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+	"version": 3,
+	"title": "Classic",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"slug": "base",
+					"color": "#ffffff",
+					"name": "Base"
+				},
+				{
+					"slug": "base-2",
+					"color": "#f4f5f8",
+					"name": "Base 2"
+				},
+				{
+					"slug": "base-3",
+					"color": "#e8e8e8",
+					"name": "Base 3"
+				},
+				{
+					"slug": "contrast",
+					"color": "#222222",
+					"name": "Contrast"
+				},
+				{
+					"slug": "contrast-2",
+					"color": "#555a66",
+					"name": "Contrast 2"
+				},
+				{
+					"slug": "muted",
+					"color": "#888888",
+					"name": "Muted"
+				},
+				{
+					"slug": "primary",
+					"color": "#0076ff",
+					"name": "Primary"
+				},
+				{
+					"slug": "primary-2",
+					"color": "#218ddf",
+					"name": "Primary 2"
+				},
+				{
+					"slug": "accent",
+					"color": "#914cc8",
+					"name": "Accent"
+				},
+				{
+					"slug": "navy",
+					"color": "#192d5b",
+					"name": "Navy"
+				},
+				{
+					"slug": "charcoal",
+					"color": "#3e424e",
+					"name": "Charcoal"
+				},
+				{
+					"slug": "ink",
+					"color": "#07254f",
+					"name": "Ink"
+				},
+				{
+					"slug": "peach",
+					"color": "#fdf0e8",
+					"name": "Peach"
+				},
+				{
+					"slug": "sky",
+					"color": "#e8f2ff",
+					"name": "Sky"
+				},
+				{
+					"slug": "mint",
+					"color": "#e6f6f0",
+					"name": "Mint"
+				},
+				{
+					"slug": "lilac",
+					"color": "#f2eafa",
+					"name": "Lilac"
+				}
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"slug": "heading",
+					"name": "Roboto Slab",
+					"fontFamily": "\"Roboto Slab\", Georgia, serif",
+					"fontFace": [
+						{
+							"fontFamily": "Roboto Slab",
+							"fontStyle": "normal",
+							"fontWeight": "100 900",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/roboto-slab-latin-wght-normal.woff2"
+							]
+						}
+					]
+				},
+				{
+					"slug": "body",
+					"name": "Raleway",
+					"fontFamily": "Raleway, \"Helvetica Neue\", Arial, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Raleway",
+							"fontStyle": "normal",
+							"fontWeight": "100 900",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/raleway-latin-wght-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Raleway",
+							"fontStyle": "italic",
+							"fontWeight": "100 900",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/raleway-latin-wght-italic.woff2"
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	"styles": {
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontWeight": "400",
+					"letterSpacing": "-0.01em"
+				}
+			},
+			"h1": {
+				"typography": {
+					"letterSpacing": "-0.01em"
+				}
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--primary)"
+				},
+				"border": {
+					"color": "var(--wp--preset--color--primary)",
+					"width": "2px"
+				},
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--navy)"
+					},
+					"border": {
+						"color": "var(--wp--preset--color--navy)"
+					}
+				}
+			}
+		}
+	}
+}

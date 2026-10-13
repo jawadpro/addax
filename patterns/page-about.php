@@ -16,9 +16,11 @@
 
 <!-- wp:pattern {"slug":"addax/stats"} /-->
 
+<!-- wp:pattern {"slug":"addax/clients"} /-->
+
 <!-- wp:pattern {"slug":"addax/team"} /-->
 
-<!-- wp:pattern {"slug":"addax/process-tabs"} /-->
+<!-- wp:pattern {"slug":"addax/process-steps"} /-->
 
 <!-- wp:pattern {"slug":"addax/testimonials"} /-->
 

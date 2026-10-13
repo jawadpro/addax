@@ -17,15 +17,15 @@ $addax_faq = array(
 	array( __( 'What happens after launch?', 'addax' ), __( 'You can choose a care plan for updates, backups and small improvements, or take it from there yourself.', 'addax' ) ),
 );
 ?>
-<!-- wp:group {"tagName":"section","metadata":{"name":"FAQ"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0"}}},"layout":{"type":"constrained"}} -->
-<section class="wp-block-group" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|60"}}}} -->
+<!-- wp:group {"tagName":"section","align":"full","metadata":{"name":"FAQ"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|60"}}}} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"40%"} -->
-<div class="wp-block-column" style="flex-basis:40%"><!-- wp:paragraph {"className":"is-style-addax-eyebrow"} -->
-<p class="is-style-addax-eyebrow"><?php esc_html_e( 'FAQ', 'addax' ); ?></p>
+<div class="wp-block-column" style="flex-basis:40%"><!-- wp:paragraph {"className":"is-style-addax-badge"} -->
+<p class="is-style-addax-badge"><?php esc_html_e( 'FAQ', 'addax' ); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"is-style-addax-underline"} -->
-<h2 class="wp-block-heading is-style-addax-underline"><?php esc_html_e( 'Questions, answered', 'addax' ); ?></h2>
+<!-- wp:heading -->
+<h2 class="wp-block-heading"><?php esc_html_e( 'Questions, answered', 'addax' ); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->

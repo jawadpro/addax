@@ -17,6 +17,7 @@ function addax_register_block_styles() {
 		'core/button'       => array(
 			'addax-outline' => __( 'Outline', 'addax' ),
 			'addax-light'   => __( 'Light outline', 'addax' ),
+			'addax-soft'    => __( 'Soft', 'addax' ),
 			'addax-arrow'   => __( 'Arrow on hover', 'addax' ),
 		),
 		'core/heading'      => array(
@@ -26,6 +27,7 @@ function addax_register_block_styles() {
 		'core/paragraph'    => array(
 			'addax-subheading' => __( 'Subheading', 'addax' ),
 			'addax-eyebrow'    => __( 'Eyebrow', 'addax' ),
+			'addax-badge'      => __( 'Badge', 'addax' ),
 			'addax-watermark'  => __( 'Watermark', 'addax' ),
 		),
 		'core/details'      => array(
@@ -34,6 +36,7 @@ function addax_register_block_styles() {
 		'core/group'        => array(
 			'addax-card' => __( 'Card', 'addax' ),
 			'addax-tile' => __( 'Tile', 'addax' ),
+			'addax-glow' => __( 'Lavender glow', 'addax' ),
 		),
 		'core/image'        => array(
 			'addax-lift' => __( 'Lifted', 'addax' ),

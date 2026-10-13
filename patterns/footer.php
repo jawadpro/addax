@@ -45,7 +45,7 @@ $addax_columns = array(
 <!-- /wp:social-links --></div>
 <!-- /wp:group -->
 
-<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"addax/options","args":{"key":"copyright"}}}},"align":"center","style":{"typography":{"letterSpacing":"0.08em"},"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"fontSize":"x-small"} -->
+<!-- wp:paragraph {"align":"center","style":{"typography":{"letterSpacing":"0.08em"},"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"fontSize":"x-small"} -->
 <p class="has-text-align-center has-x-small-font-size" style="margin-top:var(--wp--preset--spacing--30);letter-spacing:0.08em">© <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?>. <?php esc_html_e( 'All rights reserved.', 'addax' ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->

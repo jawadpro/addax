@@ -5,24 +5,108 @@
 	"settings": {
 		"color": {
 			"palette": [
-				{ "slug": "base", "color": "#ffffff", "name": "Base" },
-				{ "slug": "base-2", "color": "#fbf5f2", "name": "Base 2" },
-				{ "slug": "base-3", "color": "#f3e7e1", "name": "Base 3" },
-				{ "slug": "contrast", "color": "#231a1a", "name": "Contrast" },
-				{ "slug": "contrast-2", "color": "#5c4f4c", "name": "Contrast 2" },
-				{ "slug": "muted", "color": "#94857f", "name": "Muted" },
-				{ "slug": "primary", "color": "#e85d4a", "name": "Primary" },
-				{ "slug": "primary-2", "color": "#f08a4b", "name": "Primary 2" },
-				{ "slug": "accent", "color": "#2d6a6a", "name": "Accent" },
-				{ "slug": "navy", "color": "#2a1f2d", "name": "Navy" },
-				{ "slug": "charcoal", "color": "#3b3036", "name": "Charcoal" },
-				{ "slug": "ink", "color": "#1e161b", "name": "Ink" }
+				{
+					"slug": "base",
+					"color": "#ffffff",
+					"name": "Base"
+				},
+				{
+					"slug": "base-2",
+					"color": "#fbf5f2",
+					"name": "Base 2"
+				},
+				{
+					"slug": "base-3",
+					"color": "#f3e7e1",
+					"name": "Base 3"
+				},
+				{
+					"slug": "contrast",
+					"color": "#231a1a",
+					"name": "Contrast"
+				},
+				{
+					"slug": "contrast-2",
+					"color": "#5c4f4c",
+					"name": "Contrast 2"
+				},
+				{
+					"slug": "muted",
+					"color": "#94857f",
+					"name": "Muted"
+				},
+				{
+					"slug": "primary",
+					"color": "#e85d4a",
+					"name": "Primary"
+				},
+				{
+					"slug": "primary-2",
+					"color": "#f08a4b",
+					"name": "Primary 2"
+				},
+				{
+					"slug": "accent",
+					"color": "#2d6a6a",
+					"name": "Accent"
+				},
+				{
+					"slug": "navy",
+					"color": "#2a1f2d",
+					"name": "Navy"
+				},
+				{
+					"slug": "charcoal",
+					"color": "#3b3036",
+					"name": "Charcoal"
+				},
+				{
+					"slug": "ink",
+					"color": "#1e161b",
+					"name": "Ink"
+				},
+				{
+					"slug": "peach",
+					"color": "#fde6df",
+					"name": "Peach"
+				},
+				{
+					"slug": "sky",
+					"color": "#e5eef0",
+					"name": "Sky"
+				},
+				{
+					"slug": "mint",
+					"color": "#e2f1ec",
+					"name": "Mint"
+				},
+				{
+					"slug": "lilac",
+					"color": "#f5e9ec",
+					"name": "Lilac"
+				}
 			],
 			"gradients": [
-				{ "slug": "primary-accent", "name": "Primary to accent", "gradient": "linear-gradient(120deg, #e85d4a 0%, #2d6a6a 100%)" },
-				{ "slug": "accent-primary", "name": "Accent to primary", "gradient": "linear-gradient(120deg, #2d6a6a 0%, #e85d4a 100%)" },
-				{ "slug": "navy-ink", "name": "Navy to ink", "gradient": "linear-gradient(180deg, #2a1f2d 0%, #1e161b 100%)" },
-				{ "slug": "shade-bottom", "name": "Shade (bottom)", "gradient": "linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.75) 100%)" }
+				{
+					"slug": "primary-accent",
+					"name": "Primary to accent",
+					"gradient": "linear-gradient(120deg, #e85d4a 0%, #2d6a6a 100%)"
+				},
+				{
+					"slug": "accent-primary",
+					"name": "Accent to primary",
+					"gradient": "linear-gradient(120deg, #2d6a6a 0%, #e85d4a 100%)"
+				},
+				{
+					"slug": "navy-ink",
+					"name": "Navy to ink",
+					"gradient": "linear-gradient(180deg, #2a1f2d 0%, #1e161b 100%)"
+				},
+				{
+					"slug": "shade-bottom",
+					"name": "Shade (bottom)",
+					"gradient": "linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.75) 100%)"
+				}
 			]
 		}
 	}
