@@ -1,115 +1,137 @@
 <?php
 /**
-* Made with love - Addax v1.0
-*/
+ * Addax functions and definitions.
+ *
+ * @package Addax
+ * @since 2.0.0
+ */
 
-  /* ================ ADDAX TEMPLATE URL CONSTANT ============== */
+defined( 'ABSPATH' ) || exit;
 
-  define( 'ADDAX_TEMPLATE_PATH' , get_template_directory() );
-  define( 'ADDAX_TEMPLATE_URI' , get_template_directory_uri() );
+define( 'ADDAX_VERSION', '2.0.0' );
 
-  /* ================ ADDAX INCLUDE FILES ============== */
+require_once get_template_directory() . '/inc/block-styles.php';
+require_once get_template_directory() . '/inc/starter.php';
 
-   require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-walker-menu.php' );
-   require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-frontend-functions.php' );
-   require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-custom-style.php' );
-   require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-metabox-fields.php' );
-   require_once( ADDAX_TEMPLATE_PATH . '/inc/addax-register-sidebars.php' );
+/**
+ * Theme setup.
+ */
+function addax_setup() {
+	load_theme_textdomain( 'addax', get_template_directory() . '/languages' );
 
-  /* ================ ADDAX STYLES & SCRIPTS ============== */
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'editor-styles' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support(
+		'custom-logo',
+		array(
+			'height'      => 84,
+			'width'       => 221,
+			'flex-height' => true,
+			'flex-width'  => true,
+		)
+	);
 
-  add_action( 'wp_enqueue_scripts' , 'addax_style_scripts_enqueue' );
-  function addax_style_scripts_enqueue()
-  {
-    global $addax_theme_options;
-    $gmap_key = $addax_theme_options['gmap-api'];
-    // Addax stylsheets
-    wp_enqueue_style( 'style-css' , ADDAX_TEMPLATE_URI . '/style.css' );
-    wp_enqueue_style( 'addax-style-css' , ADDAX_TEMPLATE_URI . '/assets/css/style.css' );
-    wp_enqueue_style( 'addax-bootstrap-css' , ADDAX_TEMPLATE_URI . '/bootstrap/css/bootstrap.css' );
-    wp_enqueue_style( 'addax-bootstrap-smart-menu-css' , ADDAX_TEMPLATE_URI . '/bootstrap/css/jquery.smartmenus.bootstrap.css' );
-    wp_enqueue_style( 'addax-owl-carousel-css' , ADDAX_TEMPLATE_URI . '/assets/css/owl.carousel.css' );
-    wp_enqueue_style( 'addax-animate-css' , ADDAX_TEMPLATE_URI . '/assets/css/animate.css' );
-    wp_enqueue_style( 'addax-google-railway-font' , 'https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,800,800i' );
-    wp_enqueue_style( 'addax-google-roboto-font' , 'https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700' );
-    wp_enqueue_style( 'addax-design-ico-css' , ADDAX_TEMPLATE_URI . '/assets/css/design-ico.css' );
-    wp_enqueue_style( 'addax-font-awesome' , 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' );
+	add_editor_style( 'assets/css/addax.css' );
 
-    //Addax Scripts
-    wp_enqueue_script( 'addax-bootstrap-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-owl-carousel-js' , ADDAX_TEMPLATE_URI . '/assets/js/owl.carousel.min.js', array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-wow-min-js' , ADDAX_TEMPLATE_URI . '/assets/js/wow.min.js', array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-jquery-waypoints-js' , ADDAX_TEMPLATE_URI . '/assets/js/jquery.waypoints.min.js', array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-smart-menus-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.min.js' , array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-smart-menus-bts-js' , ADDAX_TEMPLATE_URI . '/bootstrap/js/jquery.smartmenus.bootstrap.js' , array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-mixit-up-js' , ADDAX_TEMPLATE_URI . '/assets/js/mixitup.min.js' , array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-macy-js' , ADDAX_TEMPLATE_URI . '/assets/js/macy.js', array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-custom-js' , ADDAX_TEMPLATE_URI . '/assets/js/custom.js', array( 'jquery' ), '' , true  );
-
-    if( !empty( $gmap_key ) && $addax_theme_options['homepage-footer-map'] == true && is_front_page() ) :
-    wp_enqueue_script( 'addax-map-api-js' , 'https://maps.googleapis.com/maps/api/js?key='.$gmap_key , array( 'jquery' ), '' , true  );
-    wp_enqueue_script( 'addax-map-js' , ADDAX_TEMPLATE_URI . '/assets/js/map.js', array( 'jquery' ), '' , true  );
-    endif;
-
-    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') ) {
-      wp_enqueue_script( 'comment-reply' );
-    }
-
-  }
-
-  //ADMIN ENQUEUE
-  add_action( 'admin_enqueue_scripts', 'addax_metabox_styling' );
-  function addax_metabox_styling()
-  {
-    wp_register_style( 'addax-mb-styling', ADDAX_TEMPLATE_URI . '/assets/css/addax-admin.css' );
-    wp_enqueue_style( 'addax-mb-styling' );
-  }
-
-    /* ================ ADDAX THEME SUPPORTS ============== */
-    add_action( 'after_setup_theme', 'addax_theme_setup' );
-    function addax_theme_setup()
-    {
-      add_theme_support( 'menu' );
-      add_theme_support( 'widgets' );
-      add_theme_support( 'post-thumbnails' );
-      add_theme_support( 'automatic-feed-links' );
-      add_theme_support( 'title-tag' );
-    }
-
-
-    /* ================ ADDAX MENU LOCATIONS ============== */
-
-    register_nav_menus( array(
-  		'main-menu' => esc_html__( 'Main Menu', 'addax' ),
-  	) );
-
-    /* ================ ADDAX MENU LOCATIONS ============== */
-
-    add_image_size( 'addax-info-box-img', 180, 180 );
-    add_image_size( 'addax-testimonial-img', 60, 60 );
-    add_image_size( 'addax-post-thumbnail', 345, 250 );
-    add_image_size( 'addax-tab-image', 550, 400 );
-
-    /* ================ ADDAX CONTENT WIDTH ============== */
-
-    if ( ! isset( $content_width ) ) $content_width = 900;
-
-
-
-add_action('wp_head' , 'addax_google_map_marker' );
-function addax_google_map_marker()
-{
-  global $addax_theme_options;
-  if( isset( $addax_theme_options['addax-map-icon'] ) )
-  {
-    $icon = $addax_theme_options['addax-map-icon']['url'];
-  }
-  else {
-    $icon = get_template_directory_uri(). '/assets/img/cd-icon-location.svg';
-  }
-  ?>
-  <script type="text/javascript">
-  var marker_url = "<?php echo $icon; ?>";
-  </script>
-  <?php
+	add_image_size( 'addax-card', 800, 560, true );
+	add_image_size( 'addax-portrait', 480, 640, true );
 }
+add_action( 'after_setup_theme', 'addax_setup' );
+
+/**
+ * Front-end styles and scripts.
+ */
+function addax_enqueue_assets() {
+	$uri  = get_template_directory_uri();
+	$path = get_template_directory();
+
+	wp_enqueue_style(
+		'addax',
+		$uri . '/assets/css/addax.css',
+		array(),
+		ADDAX_VERSION . '.' . filemtime( $path . '/assets/css/addax.css' )
+	);
+
+	wp_enqueue_script(
+		'addax',
+		$uri . '/assets/js/addax.js',
+		array(),
+		ADDAX_VERSION . '.' . filemtime( $path . '/assets/js/addax.js' ),
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
+	);
+}
+add_action( 'wp_enqueue_scripts', 'addax_enqueue_assets' );
+
+/**
+ * Flag JS support early, so reveal animations never hide content for no-JS visitors.
+ */
+function addax_js_class() {
+	wp_print_inline_script_tag( "document.documentElement.classList.add('addax-js');" );
+}
+add_action( 'wp_head', 'addax_js_class', 0 );
+
+/**
+ * Pattern categories.
+ */
+function addax_pattern_categories() {
+	register_block_pattern_category(
+		'addax',
+		array(
+			'label'       => __( 'Addax sections', 'addax' ),
+			'description' => __( 'Ready-made sections from the Addax theme.', 'addax' ),
+		)
+	);
+	register_block_pattern_category(
+		'addax-pages',
+		array(
+			'label'       => __( 'Addax pages', 'addax' ),
+			'description' => __( 'Full page layouts from the Addax theme.', 'addax' ),
+		)
+	);
+}
+add_action( 'init', 'addax_pattern_categories', 9 );
+
+/**
+ * Fall back to the bundled Addax logo when no site logo has been set.
+ *
+ * @param string $block_content Rendered block.
+ * @param array  $block         Parsed block.
+ * @return string
+ */
+function addax_site_logo_fallback( $block_content, $block ) {
+	if ( '' !== trim( $block_content ) ) {
+		return $block_content;
+	}
+
+	$width = isset( $block['attrs']['width'] ) ? (int) $block['attrs']['width'] : 150;
+	$src   = get_template_directory_uri() . '/assets/images/logo-sticky.png';
+
+	return sprintf(
+		'<div class="wp-block-site-logo is-addax-fallback"><a href="%1$s" class="custom-logo-link" rel="home"><img src="%2$s" class="custom-logo" width="%3$d" height="%4$d" alt="%5$s" /></a></div>',
+		esc_url( home_url( '/' ) ),
+		esc_url( $src ),
+		$width,
+		(int) round( $width * 84 / 221 ),
+		esc_attr( get_bloginfo( 'name' ) )
+	);
+}
+add_filter( 'render_block_core/site-logo', 'addax_site_logo_fallback', 10, 2 );
+
+/**
+ * Body classes used by the overlay header.
+ *
+ * @param string[] $classes Body classes.
+ * @return string[]
+ */
+function addax_body_classes( $classes ) {
+	if ( is_front_page() || is_page_template( 'page-landing' ) ) {
+		$classes[] = 'addax-has-overlay-header';
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'addax_body_classes' );

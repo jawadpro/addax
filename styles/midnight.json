@@ -1,0 +1,90 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+	"version": 3,
+	"title": "Midnight",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"slug": "base",
+					"color": "#0e1424",
+					"name": "Base"
+				},
+				{
+					"slug": "base-2",
+					"color": "#151d33",
+					"name": "Base 2"
+				},
+				{
+					"slug": "base-3",
+					"color": "#1c2640",
+					"name": "Base 3"
+				},
+				{
+					"slug": "contrast",
+					"color": "#f4f6fb",
+					"name": "Contrast"
+				},
+				{
+					"slug": "contrast-2",
+					"color": "#c3c9d8",
+					"name": "Contrast 2"
+				},
+				{
+					"slug": "muted",
+					"color": "#8a93a8",
+					"name": "Muted"
+				},
+				{
+					"slug": "primary",
+					"color": "#4d9bff",
+					"name": "Primary"
+				},
+				{
+					"slug": "primary-2",
+					"color": "#38c6ff",
+					"name": "Primary 2"
+				},
+				{
+					"slug": "accent",
+					"color": "#b07cff",
+					"name": "Accent"
+				},
+				{
+					"slug": "navy",
+					"color": "#0a0f1c",
+					"name": "Navy"
+				},
+				{
+					"slug": "charcoal",
+					"color": "#1a2238",
+					"name": "Charcoal"
+				},
+				{
+					"slug": "ink",
+					"color": "#070b16",
+					"name": "Ink"
+				}
+			]
+		}
+	},
+	"styles": {
+		"elements": {
+			"button": {
+				"color": {
+					"text": "#0e1424"
+				},
+				":hover": {
+					"color": {
+						"background": "#f4f6fb",
+						"text": "#0e1424"
+					},
+					"border": {
+						"color": "#f4f6fb"
+					}
+				}
+			}
+		},
+		"css": ".addax-logo img{filter:brightness(0) invert(1);} .wp-block-addax-team-member .addax-team__info{background:#151d33;color:#f4f6fb;}"
+	}
+}
